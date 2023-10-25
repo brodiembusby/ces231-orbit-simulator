@@ -50,6 +50,14 @@ public:
    void addPixelsX(double dxPixels)      { setPixelsX(getPixelsX() + dxPixels);     }
    void addPixelsY(double dyPixels)      { setPixelsY(getPixelsY() + dyPixels);     }
 
+  
+   // Math relating to position
+   // These might be moved to velocity
+   double heightAboveTheEarth(double x, double y, double radius);
+   double horizontalPositionConstantVelocity(double initialHorizontalPostion, double dx, double time);
+   double verticalPositionConstantVeloctity(double initalVerticalPosition, double dx, double time);
+   
+   
    // deal with the ratio of meters to pixels
    void setZoom(double metersFromPixels)
    {
