@@ -8,7 +8,7 @@ public:
 
    // Delete this file if you have already implemented these functions somewhere else. I don't think these go in 
    // Velocity or acceleration maybe position
-   double gravityEquation(double gravity, double radius, double height);
+
    double directionOfGravityPull(double Xe, double Ye, double Xs, double Ys);
    double distanceFormula(double initalDistance, double velocity, double  time, double acceleration);
 
