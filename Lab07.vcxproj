@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
+    <ClCompile Include="gps.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="orbitObject.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gps.h" />
     <ClInclude Include="orbitObject.h" />
     <ClInclude Include="acceleration.h" />
     <ClInclude Include="Math.h" />
