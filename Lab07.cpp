@@ -11,12 +11,14 @@
  *      ??
  *****************************************************************/
 
+#define _USE_MATH_DEFINES  // For PI
+
 #include <cassert>      // for ASSERT
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"   // for POINT
 #include "gps.h"        // for GPS satellite
-
+#include <math.h>       // For PI
 
 using namespace std;
 
@@ -57,6 +59,7 @@ public:
       // Initialize GPS satellite.
 
       gps.getPosition().setMetersY(42164000.0);
+      gps.setAngle(M_PI_2);
 
       angleEarth = 0.0;
    }
