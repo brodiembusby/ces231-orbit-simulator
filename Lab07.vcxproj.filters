@@ -65,6 +65,12 @@
     <ClInclude Include="acceleration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="orbitObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
