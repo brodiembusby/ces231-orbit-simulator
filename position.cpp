@@ -55,6 +55,7 @@ std::istream& operator >> (std::istream& in, Position& pt)
 }
 
 double Position::heightAboveTheEarth(double x, double y, double radius) {
+   // The current height above the earth
    return sqrt(pow(x, 2.0) + pow(y, 2.0)) - radius;
 }
 
@@ -64,6 +65,6 @@ double Position::horizontalPositionConstantVelocity(double initialHorizontalPost
 }
 
 // yT
-double Position::verticalPositionConstantVeloctity(double initialVerticalPostion, double dx, double time) {
-   return initialVerticalPostion + (dx + time);
+double Position::verticalPositionConstantVeloctity(double initialVerticalPostion, double dy, double time) {
+   return initialVerticalPostion + (dy + time);
 }

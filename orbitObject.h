@@ -23,7 +23,7 @@ protected:
    double angle;
 
 public:
-   OrbitObject() : position(), velocity(), acceleration(), angle(0.0) {}
+   OrbitObject() : position(), velocity(velocity.getdx0(),velocity.getdy0()), acceleration(), angle(0.0) {}
 
    Position& getPosition() { return position; }
    Velocity& getVelocity() { return velocity; }

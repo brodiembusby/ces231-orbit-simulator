@@ -8,6 +8,11 @@ class Velocity
 
 public:
    
+   //Velocity(double speed, double initialHorizontalVelocity, double initialVerticalVelocity) { geoSpeed = speed; dx0 = initialHorizontalVelocity; dy0 = initialVerticalVelocity; }
+  
+   Velocity() : dx0(0.0), dy0(0.0) {}
+   Velocity( double initialHorizontalVelocity, double initialVerticalVelocity) { dx0 = initialHorizontalVelocity; dy0 = initialVerticalVelocity; }
+
    // I dont know what these do exactly
    double motionWithConstantVelocity(double initialDistance, double velocity, double time);
    double velocitywithConstantAcceleration(double initalVelocity, double acceleration, double time);

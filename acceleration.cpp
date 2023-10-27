@@ -1,30 +1,30 @@
 #include "acceleration.h"
-#include <math.h> // for sin and cos
+#include <math.h>       // For PI
 # define M_PI 3.14159265358979323846
 
 
 /************************************************************************
  * DDX
  * Calculate the horizontal component of the acceleration based on the given
- * total acceleration and angle.
- *    INPUT  totalAcceleration   The total acceleration magnitude
+ * gravitational height and angle.
+ *    INPUT  gravitational height   The current height above earth
  *           angle               Angle in radians
  *    OUTPUT                     Horizontal acceleration component
  ************************************************************************/
-double Acceleration::ddx(double totalAcceleration, double angle) {
-   return totalAcceleration * sin(angle);
+double Acceleration::ddx(double gravitationalHeight, double angle) {
+   return gravitationalHeight * sin(angle);
 }
 
 /************************************************************************
  * DDY
  * Calculate the vertical component of the acceleration based on the given
- * total acceleration and angle.
- *    INPUT  totalAcceleration   The total acceleration magnitude
+ * gravitational height and angle.
+ *    INPUT  gravitational height   The current height above earth
  *           angle               Angle in radians
  *    OUTPUT                     Vertical acceleration component
  ************************************************************************/
-double Acceleration::ddy(double totalAcceleration, double angle) {
-   return totalAcceleration * cos(angle);
+double Acceleration::ddy(double gravitationalHeight, double angle) {
+   return gravitationalHeight * cos(angle);
 }
 
 /************************************************************************
@@ -47,5 +47,6 @@ double Acceleration::gravityH(double gravity, double radius, double height) {
  *    OUTPUT                     Angle in radians
  ************************************************************************/
 double Acceleration::degreeToRadian(double degree) {
+   // M_PI_2 wasnt working for me so i defined my own
    return degree * (M_PI / 180);
 }

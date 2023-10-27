@@ -18,6 +18,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"   // for POINT
 #include "gps.h"        // for GPS satellite
+#include "velocity.h"   // for Velocity class
 #include <math.h>       // For PI
 
 using namespace std;
@@ -65,7 +66,6 @@ public:
    }
 
    GPS gps;
-
    //Position ptHubble;
    //Position ptSputnik;
    //Position ptStarlink;
@@ -122,8 +122,33 @@ void callBack(const Interface* pUI, void* p)
    // draw everything
    //
 
+   //Seconds per frame
+   double time = 48.0;
+   
    Position pt;
+   Velocity gpsVel;
+   Acceleration gpsAcc;
    ogstream gout(pt);
+
+   //Positonal Variables 
+   double radiusEarth = 6378000.0;
+   double heightAboveEarth = pt.heightAboveTheEarth(21082, 36515095 ,radiusEarth); // Initial height set off my 30 degress giving us these new inital x and y
+   
+   // Finding out acceleration for gps
+   double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth);
+   double radians = gpsAcc.degreeToRadian(pDemo->gps.getAngle());
+   double ddx = gpsAcc.ddx(gravitationHeight, radians);
+   double ddy = gpsAcc.ddy(gravitationHeight, radians);
+
+   // Finding out Velocity for gps
+   double initalVelocitydX;
+   double initalVelocitydY;
+
+   double dx = gpsVel.dx(initalVelocitydX, ddx, time);
+   double dy = gpsVel.dx(initalVelocitydY, ddy, time);
+
+   Position newPos(pDemo->gps.getPosition().getMetersX() - dx, pDemo->gps.getPosition().getMetersY() - dy);
+   pDemo->gps.setPosition(newPos);
 
    // draw satellites
    //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);

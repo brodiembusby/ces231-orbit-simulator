@@ -12,7 +12,5 @@ double Math::directionOfGravityPull(double Xe, double Ye, double Xs, double Ys) 
    return atan2(Xe - Xs, Ye - Ys);
 }
 
-double Math::distanceFormula(double initialDistance, double velocity, double  time, double acceleration) {
-   return initialDistance + (velocity * time) + (1 / 2) * (acceleration * pow(time, 2.0));
-}
+
 

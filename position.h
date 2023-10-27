@@ -52,7 +52,7 @@ public:
 
   
    // Math relating to position
-   // These might be moved to velocity
+   // The current position above the earth
    double heightAboveTheEarth(double x, double y, double radius);
    double horizontalPositionConstantVelocity(double initialHorizontalPostion, double dx, double time);
    double verticalPositionConstantVeloctity(double initalVerticalPosition, double dx, double time);
