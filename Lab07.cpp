@@ -19,6 +19,7 @@
 #include "position.h"   // for POINT
 #include "gps.h"        // for GPS satellite
 #include "velocity.h"   // for Velocity class
+#include "rotation.h"   // for Rotation class
 #include <math.h>       // For PI
 
 using namespace std;
@@ -64,7 +65,7 @@ public:
       gps.setAngle(M_PI_2);
       Velocity vel(-3100.0, 0.0);
       gps.setVelocity(vel);
-      angleEarth = 0.0;
+      Earth.updateEarth();
    }
 
    GPS gps;
@@ -80,7 +81,7 @@ public:
    //unsigned char phaseStar;
 
    //double angleShip;
-   double angleEarth;
+   Rotation Earth;
 };
 
 /*************************************
@@ -116,7 +117,8 @@ void callBack(const Interface* pUI, void* p)
    //
 
    // rotate the earth
-   pDemo->angleEarth += 0.01;
+   pDemo->Earth.updateEarth();
+   
    //pDemo->angleShip += 0.02;
    //pDemo->phaseStar++;
 
@@ -200,7 +202,7 @@ void callBack(const Interface* pUI, void* p)
 
    // draw the earth
    pt.setMeters(0.0, 0.0);
-   gout.drawEarth(pt, pDemo->angleEarth);
+   gout.drawEarth(pt, pDemo->Earth.getAngle());
 }
 
 double Position::metersFromPixels = 40.0;
