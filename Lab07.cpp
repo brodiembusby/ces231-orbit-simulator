@@ -123,7 +123,7 @@ void callBack(const Interface* pUI, void* p)
    //
 
    //Seconds per frame
-   double time = 48.0;
+   double time = 48.0; // Time shouldnt change for whole simulation
    
    Position pt;
    Velocity gpsVel;
@@ -131,24 +131,38 @@ void callBack(const Interface* pUI, void* p)
    ogstream gout(pt);
 
    //Positonal Variables 
-   double radiusEarth = 6378000.0;
-   double heightAboveEarth = pt.heightAboveTheEarth(21082, 36515095 ,radiusEarth); // Initial height set off my 30 degress giving us these new inital x and y
+   double radiusEarth = 6378000.0;  // radius of the earth
+  
+
+   // TODO:
+   // double initalX;
+   // double initalY;
+
+
+   // Inital x and y would be here however he wants us to set it off by 30 degrees first giving us those hard coded numbers
+   double heightAboveEarth = pt.heightAboveTheEarth(21082, 36515095 ,radiusEarth); // Initial height set off by 30 degress giving us these new inital x and y
    
    // Finding out acceleration for gps
-   double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth);
-   double radians = gpsAcc.degreeToRadian(pDemo->gps.getAngle());
-   double ddx = gpsAcc.ddx(gravitationHeight, radians);
-   double ddy = gpsAcc.ddy(gravitationHeight, radians);
+   double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth); // I think objects height above earth
+   double radians = gpsAcc.degreeToRadian(pDemo->gps.getAngle()); // Convert degrees to radians
+   double ddx = gpsAcc.ddx(gravitationHeight, radians);  // Horizontal acceleration
+   double ddy = gpsAcc.ddy(gravitationHeight, radians);  // Vertical acceleration
 
    // Finding out Velocity for gps
+   
+   // TODO:
    double initalVelocitydX;
    double initalVelocitydY;
 
-   double dx = gpsVel.dx(initalVelocitydX, ddx, time);
-   double dy = gpsVel.dx(initalVelocitydY, ddy, time);
+   double dx = gpsVel.dx(initalVelocitydX, ddx, time); // horizontal velocity
+   double dy = gpsVel.dx(initalVelocitydY, ddy, time);  // vertical velocity
 
-   Position newPos(pDemo->gps.getPosition().getMetersX() - dx, pDemo->gps.getPosition().getMetersY() - dy);
-   pDemo->gps.setPosition(newPos);
+
+   // Finding a new position
+   double x = pt.distanceFormula(pDemo->gps.getPosition().getMetersX(), dx, time, ddx); // new x position
+   double y = pt.distanceFormula(pDemo->gps.getPosition().getMetersY(), dx, time, ddy);// new y position
+   Position newPos(x, y);
+   pDemo->gps.setPosition(newPos);  // Setting new x position
 
    // draw satellites
    //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
