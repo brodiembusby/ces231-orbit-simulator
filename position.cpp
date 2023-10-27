@@ -68,3 +68,8 @@ double Position::horizontalPositionConstantVelocity(double initialHorizontalPost
 double Position::verticalPositionConstantVeloctity(double initialVerticalPostion, double dy, double time) {
    return initialVerticalPostion + (dy + time);
 }
+
+// acceleration will be ddx or ddy
+double Position::distanceFormula(double initialDistance, double velocity, double  time, double acceleration) {
+   return initialDistance + (velocity * time) + (1 / 2) * (acceleration * pow(time, 2.0));
+}

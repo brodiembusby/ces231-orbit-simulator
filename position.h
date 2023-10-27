@@ -56,7 +56,7 @@ public:
    double heightAboveTheEarth(double x, double y, double radius);
    double horizontalPositionConstantVelocity(double initialHorizontalPostion, double dx, double time);
    double verticalPositionConstantVeloctity(double initalVerticalPosition, double dx, double time);
-   
+   double distanceFormula(double initialDistance, double velocity, double  time, double acceleration); // acceleration will be ddx or ddy
    
    // deal with the ratio of meters to pixels
    void setZoom(double metersFromPixels)
