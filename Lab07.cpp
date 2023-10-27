@@ -59,7 +59,8 @@ public:
 
       // Initialize GPS satellite.
 
-      gps.getPosition().setMetersY(42164000.0);
+      gps.getPosition().setMetersY(42164000);
+      gps.getPosition().setMetersX(0);
       gps.setAngle(M_PI_2);
       Velocity vel(-3100.0, 0.0);
       gps.setVelocity(vel);
@@ -141,7 +142,7 @@ void callBack(const Interface* pUI, void* p)
 
 
    // Inital x and y would be here however he wants us to set it off by 30 degrees first giving us those hard coded numbers
-   double heightAboveEarth = pt.heightAboveTheEarth(21082, 36515095 ,radiusEarth); // Height above earth 
+   double heightAboveEarth = pt.heightAboveTheEarth(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY(),radiusEarth); // Height above earth 
    
    // Finding out acceleration for gps
    double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth); // I think objects height above earth
