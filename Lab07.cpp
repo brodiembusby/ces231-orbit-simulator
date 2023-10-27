@@ -140,7 +140,7 @@ void callBack(const Interface* pUI, void* p)
 
 
    // Inital x and y would be here however he wants us to set it off by 30 degrees first giving us those hard coded numbers
-   double heightAboveEarth = pt.heightAboveTheEarth(21082, 36515095 ,radiusEarth); // Initial height set off by 30 degress giving us these new inital x and y
+   double heightAboveEarth = pt.heightAboveTheEarth(21082, 36515095 ,radiusEarth); // Height above earth 
    
    // Finding out acceleration for gps
    double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth); // I think objects height above earth
@@ -160,9 +160,9 @@ void callBack(const Interface* pUI, void* p)
 
    // Finding a new position
    double x = pt.distanceFormula(pDemo->gps.getPosition().getMetersX(), dx, time, ddx); // new x position
-   double y = pt.distanceFormula(pDemo->gps.getPosition().getMetersY(), dx, time, ddy);// new y position
+   double y = pt.distanceFormula(pDemo->gps.getPosition().getMetersY(), dy, time, ddy);// new y position
    Position newPos(x, y);
-   pDemo->gps.setPosition(newPos);  // Setting new x position
+   pDemo->gps.setPosition(newPos);  // Setting new position
 
    // draw satellites
    //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
