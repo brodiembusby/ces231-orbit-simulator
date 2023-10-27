@@ -61,7 +61,8 @@ public:
 
       gps.getPosition().setMetersY(42164000.0);
       gps.setAngle(M_PI_2);
-
+      Velocity vel(-3100.0, 0.0);
+      gps.setVelocity(vel);
       angleEarth = 0.0;
    }
 
@@ -151,11 +152,8 @@ void callBack(const Interface* pUI, void* p)
    // Finding out Velocity for gps
    
    // TODO:
-   double initalVelocitydX;
-   double initalVelocitydY;
-
-   double dx = gpsVel.dx(initalVelocitydX, ddx, time); // horizontal velocity
-   double dy = gpsVel.dx(initalVelocitydY, ddy, time);  // vertical velocity
+   double dx = gpsVel.dx(pDemo->gps.getVelocity().getdx0(), ddx, time); // horizontal velocity
+   double dy = gpsVel.dy(pDemo->gps.getVelocity().getdy0(), ddy, time);  // vertical velocity
 
 
    // Finding a new position
