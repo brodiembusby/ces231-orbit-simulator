@@ -59,8 +59,8 @@ public:
 
       // Initialize GPS satellite.
 
-      gps.getPosition().setMetersY(42164000);
-      gps.getPosition().setMetersX(0);
+      gps.getPosition().setMetersY(42164000.0);
+      gps.getPosition().setMetersX(0.0);
       gps.setAngle(M_PI_2);
       Velocity vel(-3100.0, 0.0);
       gps.setVelocity(vel);
@@ -136,11 +136,6 @@ void callBack(const Interface* pUI, void* p)
    double radiusEarth = 6378000.0;  // radius of the earth
   
 
-   // TODO:
-   // double initalX;
-   // double initalY;
-
-
    // Inital x and y would be here however he wants us to set it off by 30 degrees first giving us those hard coded numbers
    double heightAboveEarth = pt.heightAboveTheEarth(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY(),radiusEarth); // Height above earth 
    
@@ -152,14 +147,19 @@ void callBack(const Interface* pUI, void* p)
 
    // Finding out Velocity for gps
    
-   // TODO:
    double dx = gpsVel.dx(pDemo->gps.getVelocity().getdx0(), ddx, time); // horizontal velocity
    double dy = gpsVel.dy(pDemo->gps.getVelocity().getdy0(), ddy, time);  // vertical velocity
 
+   //set new initial velocity for next frame
+   
+   //Velocity newgpsVel(dx, dy);
+   //pDemo->gps.setVelocity(newgpsVel);
+   // im pretty sure that both of these work the same. I think the problem is with dx0 and dy0
    pDemo->gps.getVelocity().setdx0(dx);
    pDemo->gps.getVelocity().setdy0(dy);
 
    // Finding a new position
+   //pt x and y are 0 don't know if this important
    double x = pt.distanceFormula(pDemo->gps.getPosition().getMetersX(), dx, time, ddx); // new x position
    double y = pt.distanceFormula(pDemo->gps.getPosition().getMetersY(), dy, time, ddy);// new y position
    Position newPos(x, y);
