@@ -156,6 +156,8 @@ void callBack(const Interface* pUI, void* p)
    double dx = gpsVel.dx(pDemo->gps.getVelocity().getdx0(), ddx, time); // horizontal velocity
    double dy = gpsVel.dy(pDemo->gps.getVelocity().getdy0(), ddy, time);  // vertical velocity
 
+   pDemo->gps.getVelocity().setdx0(dx);
+   pDemo->gps.getVelocity().setdy0(dy);
 
    // Finding a new position
    double x = pt.distanceFormula(pDemo->gps.getPosition().getMetersX(), dx, time, ddx); // new x position
