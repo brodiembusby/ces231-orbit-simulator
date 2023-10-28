@@ -1,33 +1,21 @@
 #pragma once
-class Acceleration
+
+#include "vector2D.h"
+#include "position.h"
+
+class Acceleration : public Vector2D
 {
 private:
-   double angle; // initalize angle
-
-   // I dont know where we are calling gravity  so i called it here because of 
-   // Bro helfrich video
-   double gravity = -9.8067 ; // initalize gravity -9.8067 m/s2
-
+   static const double getGravity(const double height);
+   static const double getGravityAngle(const Position& pos);
 
 public:
-   
-   Acceleration() {};
+   Acceleration() : Vector2D() {}
+   Acceleration(double x, double y) : Vector2D(x, y) {}
+   Acceleration(const Acceleration& pt) : Vector2D(pt) {}
 
-   double degreeToRadian(double degree); // convert degrees to radians
-  
-   // Gn on helfritchs board
-   double gravityH(double gravity, double radius, double height);
+   static const Acceleration getGravityComponent(const Position& pos);
 
-   // horizontal component of acceleration
-   double ddx(double totalAcceleration, double angle);
-   // vertical component of acceleration
-   double ddy(double totalAcceleration, double angle);
-
-   // Setters
-   void setGravity(double gravy) { this->gravity = gravy; }
-
-   // Getters 
-   double getGravity() { return gravity; }
-
+   const Velocity getDeltaVelocity(const double time) const;
 };
 

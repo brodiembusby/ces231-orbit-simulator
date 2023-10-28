@@ -1,52 +1,52 @@
 #include "acceleration.h"
-#include <math.h>       // For PI
-# define M_PI 3.14159265358979323846
-
+#include "position.h"
+#include "velocity.h"
+#include "constants.h"
+#include <cmath>
 
 /************************************************************************
- * DDX
- * Calculate the horizontal component of the acceleration based on the given
- * gravitational height and angle.
- *    INPUT  gravitational height   The current height above earth
- *           angle               Angle in radians
- *    OUTPUT                     Horizontal acceleration component
+ * GET GRAVITY COMPONENT
+ * Calculates the gravity component at the provided position.
+ *    INPUT  pos                 The current position in absolute space.
+ *    OUTPUT                     An acceleration containing the components of gravity.
  ************************************************************************/
-double Acceleration::ddx(double gravitationalHeight, double angle) {
-   return gravitationalHeight * sin(angle);
+const Acceleration Acceleration::getGravityComponent(const Position& pos)
+{
+   const double gravity = getGravity(pos.getAltitude());
+   const double angle = getGravityAngle(pos);
+   double x = getHorizontalComponent(gravity, angle);
+   double y = getVerticalComponent(gravity, angle);
+   return Acceleration(x, y);
 }
 
 /************************************************************************
- * DDY
- * Calculate the vertical component of the acceleration based on the given
- * gravitational height and angle.
- *    INPUT  gravitational height   The current height above earth
- *           angle               Angle in radians
- *    OUTPUT                     Vertical acceleration component
+ * GET GRAVITY ANGLE
+ * Gets the angle of gravity towards the planet.
+ *    INPUT  pos                 The current position in absolute space.
+ *    OUTPUT                     The angle in radians of the gravity vector.
  ************************************************************************/
-double Acceleration::ddy(double gravitationalHeight, double angle) {
-   return gravitationalHeight * cos(angle);
+const double Acceleration::getGravityAngle(const Position& pos)
+{
+   return (const double)std::atan2(-pos.getMetersY(), -pos.getMetersX());
 }
 
 /************************************************************************
- * GRAVITYH
- * Calculate the gravitational acceleration at a specific height above
- * a planet's surface.
- *    INPUT  gravity             Gravitational constant of the planet
- *           radius              Radius of the planet
- *           height              Height above the planet's surface
- *    OUTPUT                     Gravitational acceleration at the specified height
+ * GET GRAVITY
+ * Calculates the magnitude of gravity at the provided altitude above sea level.
+ *    INPUT  height              The altitude in meters above sea level.
+ *    OUTPUT                     The magnitude of gravity in m/s^2.
  ************************************************************************/
-double Acceleration::gravityH(double gravity, double radius, double height) {
-   return gravity * pow((radius / (radius + height)), 2.0);
+const double Acceleration::getGravity(const double height)
+{
+   return GRAVITY_SEA_LEVEL * std::pow(RADIUS_EARTH / (RADIUS_EARTH + height), 2);
 }
-
 /************************************************************************
- * DEGREETORADIAN
- * Convert an angle value from degrees to radians.
- *    INPUT  degree              Angle in degrees
- *    OUTPUT                     Angle in radians
+ * GET DELTA VELOCITY
+ * Calculates the resulting velocity change over time from this acceleration.
+ *    INPUT  time                The amount of time this acceleration is active.
+ *    OUTPUT                     A velocity containing the deltas.
  ************************************************************************/
-double Acceleration::degreeToRadian(double degree) {
-   // M_PI_2 wasnt working for me so i defined my own
-   return degree * (M_PI / 180);
+const Velocity Acceleration::getDeltaVelocity(const double time) const
+{
+   return Velocity(x * time, y * time);
 }

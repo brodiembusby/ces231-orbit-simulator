@@ -23,18 +23,29 @@ protected:
    double angle;
 
 public:
-   OrbitObject() : position(), velocity(velocity.getdx0(),velocity.getdy0()), acceleration(), angle(0.0) {}
+   OrbitObject() : position(), velocity(), acceleration(), angle(0.0) {}
+   OrbitObject(const Position& position, const Velocity& velocity) : OrbitObject()
+   {
+      this->position = position;
+      this->velocity = velocity;
+   }
 
+   // Getters
    Position& getPosition() { return position; }
    Velocity& getVelocity() { return velocity; }
    Acceleration& getAcceleration() { return acceleration; }
    double& getAngle() { return angle; }
 
+   // Setters
    void setPosition(const Position& position) { this->position = position; }
    void setVelocity(const Velocity& velocity) { this->velocity = velocity; }
    void setAcceleration(const Acceleration& acceleration) { this->acceleration = acceleration; }
    void setAngle(const double angle) { this->angle = angle; }
 
-   virtual void draw(ogstream gout) const = 0;
+   // Operations
+   void update(const double time);
+
+   // Overrides
+   virtual void draw(ogstream& gout) const = 0;
 };
 

@@ -1,30 +1,22 @@
 #pragma once
+
+#include "constants.h"
+
 class Rotation
 {
 public:
 
-   Rotation() : angle(0), speed(1) {}
+   Rotation() : angle(0), speed(0) {}
+   Rotation(double angle) : angle(angle), speed(0) {}
+   Rotation(double angle, double speed) : angle(angle), speed(speed) {}
 
    double getAngle() const { return angle; }
-   void setAngle(double angle) { this->angle = angle; }
-
    double getSpeed() const { return speed; }
+
+   void setAngle(double angle) { this->angle = angle; }
    void setSpeed(double speed) { this->speed = speed; }
 
-   /*
-   * Will update the angle that the object is facing.
-   */
-   void update(double angle);
-   
-   /*
-   * Will update the angle that the earth is facing.
-   */
-   void updateEarth();
-
-   /*
-   * Will update the angle that the satallite is facing.
-   */
-   void updateSatellite();
+   void update(const double time) { angle += speed * TIME; }
 
 private:
    double angle;

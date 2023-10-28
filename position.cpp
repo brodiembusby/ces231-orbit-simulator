@@ -8,25 +8,9 @@
  ************************************************************************/
 
 #include "position.h"
+#include "acceleration.h"
 #include <cassert>
-
-
-Position::Position(double x, double y) : x(0.0), y(0.0)
-{
-   setMetersX(x);
-   setMetersY(y);
-}
-
-/******************************************
- * POINT : ASSIGNMENT
- * Assign a point
- *****************************************/
-Position& Position::operator = (const Position& pt)
-{
-   x = pt.x;
-   y = pt.y;
-   return *this;
-}
+#include "constants.h"
 
 /******************************************
  * POSITION insertion
@@ -54,9 +38,14 @@ std::istream& operator >> (std::istream& in, Position& pt)
    return in;
 }
 
-double Position::heightAboveTheEarth(double x, double y, double radius) {
+const double Position::getAltitude() const {
    // The current height above the earth
-   return sqrt(pow(x, 2.0) + pow(y, 2.0)) - radius;
+   return sqrt(pow(x, 2.0) + pow(y, 2.0)) - RADIUS_EARTH;
+}
+
+const Acceleration& Position::getGravity() const
+{
+   return Acceleration::getGravityComponent(*this);
 }
 
 // xT

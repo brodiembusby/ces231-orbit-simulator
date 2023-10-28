@@ -14,6 +14,7 @@
 
 class GPS : public OrbitObject
 {
-   void draw(ogstream gout) const override { gout.drawGPS(position, angle); }
+public:
+   void draw(ogstream& gout) const override { gout.drawGPS(position, angle); }
 };
 

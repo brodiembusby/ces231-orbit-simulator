@@ -1,6 +1,6 @@
 /***********************************************************************
  * Header File:
- *    Point : The representation of a position 
+ *    Point : The representation of a position
  * Author:
  *    Br. Helfrich
  * Summary:
@@ -13,63 +13,35 @@
 
 #include <iostream> 
 #include <cmath>
+#include "vector2D.h"
+
 
 class TestPosition;
 class Acceleration;
 class Velocity;
+class Acceleration;
 
 /*********************************************
  * Position
- * A single position on the field in Meters  
+ * A single position on the field in Meters
  *********************************************/
-class Position
+class Position : public Vector2D
 {
 public:
    friend TestPosition;
-   
-   // constructors
-   Position()            : x(0.0), y(0.0)  {}
-   Position(double x, double y);
-   Position(const Position & pt) : x(pt.x), y(pt.y) {}
-   Position& operator = (const Position& pt);
 
-   // getters
-   double getMetersX()       const { return x;                    }
-   double getMetersY()       const { return y;                    }
-   double getPixelsX()       const { return x / metersFromPixels; }
-   double getPixelsY()       const { return y / metersFromPixels; }
+   Position() : Vector2D() {}
+   Position(double x, double y) : Vector2D(x, y) {}
+   Position(const Position& pt) : Vector2D(pt) {}
 
-   // setters
-   void setMeters(double xMeters, double yMeters) {x = xMeters; y = yMeters; }
-   void setMetersX(double xMeters)       { x = xMeters;           }
-   void setMetersY(double yMeters)       { y = yMeters;           }
-   void setPixelsX(double xPixels)       { x = xPixels * metersFromPixels;          }
-   void setPixelsY(double yPixels)       { y = yPixels * metersFromPixels;          }
-   void addMetersX(double dxMeters)      { setMetersX(getMetersX() + dxMeters);     }
-   void addMetersY(double dyMeters)      { setMetersY(getMetersY() + dyMeters);     }
-   void addPixelsX(double dxPixels)      { setPixelsX(getPixelsX() + dxPixels);     }
-   void addPixelsY(double dyPixels)      { setPixelsY(getPixelsY() + dyPixels);     }
-
-  
    // Math relating to position
    // The current position above the earth
-   double heightAboveTheEarth(double x, double y, double radius);
+   const double getAltitude() const;
+   const Acceleration& getGravity() const;
    double horizontalPositionConstantVelocity(double initialHorizontalPostion, double dx, double time);
    double verticalPositionConstantVeloctity(double initalVerticalPosition, double dx, double time);
    double distanceFormula(double initialDistance, double velocity, double  time, double acceleration); // acceleration will be ddx or ddy
    double directionOfGravityPull(double Xe, double Ye, double Xs, double Ys);
-
-   // deal with the ratio of meters to pixels
-   void setZoom(double metersFromPixels)
-   {
-      this->metersFromPixels = metersFromPixels;
-   }
-   double getZoom() const { return metersFromPixels; }
-
-private:
-   double x;                 // horizontal position
-   double y;                 // vertical position
-   static double metersFromPixels;
 };
 
 /*********************************************
@@ -79,12 +51,12 @@ private:
 inline double computeDistance(const Position& pos1, const Position& pos2)
 {
    return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
-               (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
+      (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
 }
 
 // stream I/O useful for debugging
-std::ostream & operator << (std::ostream & out, const Position& pt);
-std::istream & operator >> (std::istream & in,        Position& pt);
+std::ostream& operator << (std::ostream& out, const Position& pt);
+std::istream& operator >> (std::istream& in, Position& pt);
 
 
 /*********************************************
