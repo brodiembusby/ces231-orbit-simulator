@@ -73,3 +73,8 @@ double Position::verticalPositionConstantVeloctity(double initialVerticalPostion
 double Position::distanceFormula(double initialDistance, double velocity, double  time, double acceleration) {
    return initialDistance + (velocity * time) + (1 / 2) * (acceleration * pow(time, 2.0));
 }
+
+//returns an an angle in radians  pointing to center of earth 
+double Position::directionOfGravityPull(double Xe, double Ye, double Xs, double Ys) {
+   return atan2(Ye - Ys,Xe - Xs);
+}

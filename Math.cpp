@@ -8,9 +8,5 @@
 
 
 
-double Math::directionOfGravityPull(double Xe, double Ye, double Xs, double Ys) {
-   return atan2(Xe - Xs, Ye - Ys);
-}
-
 
 

@@ -21,7 +21,7 @@
 #include "velocity.h"   // for Velocity class
 #include "rotation.h"   // for Rotation class
 #include <math.h>       // For PI
-
+#include <Math.h>
 using namespace std;
 
 /*************************************************************************
@@ -62,7 +62,7 @@ public:
 
       gps.getPosition().setMetersY(42164000.0);
       gps.getPosition().setMetersX(0.0);
-      gps.setAngle(M_PI_2);
+      /*gps.setAngle(M_PI_2); to match his video*/
       Velocity vel(-3100.0, 0.0);
       gps.setVelocity(vel);
       Earth.updateEarth();
@@ -133,7 +133,6 @@ void callBack(const Interface* pUI, void* p)
    Velocity gpsVel;
    Acceleration gpsAcc;
    ogstream gout(pt);
-
    //Positonal Variables 
    double radiusEarth = 6378000.0;  // radius of the earth
   
@@ -144,8 +143,12 @@ void callBack(const Interface* pUI, void* p)
    // Finding out acceleration for gps
    double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth); // I think objects height above earth
    double radians = gpsAcc.degreeToRadian(pDemo->gps.getAngle()); // Convert degrees to radians
-   double ddx = gpsAcc.ddx(gravitationHeight, radians);  // Horizontal acceleration
-   double ddy = gpsAcc.ddy(gravitationHeight, radians);  // Vertical acceleration
+   
+   // angle to the earth using gravity
+   double gravityDirection = pt.directionOfGravityPull(0.0, 0.0,pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY());
+   
+   double ddx = gpsAcc.ddx(gravitationHeight, gravityDirection);  // Horizontal acceleration
+   double ddy = gpsAcc.ddy(gravitationHeight, gravityDirection);  // Vertical acceleration
 
    // Finding out Velocity for gps
    
