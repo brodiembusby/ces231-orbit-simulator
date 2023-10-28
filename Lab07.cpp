@@ -62,7 +62,7 @@ public:
 
       gps.getPosition().setMetersY(42164000.0);
       gps.getPosition().setMetersX(0.0);
-      /*gps.setAngle(M_PI_2); to match his video*/
+      /*gps.setAngle(M_PI_2); to match his video the sat doesnt have a angle*/
       Velocity vel(-3100.0, 0.0);
       gps.setVelocity(vel);
       Earth.updateEarth();
@@ -137,14 +137,13 @@ void callBack(const Interface* pUI, void* p)
    double radiusEarth = 6378000.0;  // radius of the earth
   
 
-   // Inital x and y would be here however he wants us to set it off by 30 degrees first giving us those hard coded numbers
+   // Inital x and y for each frame
    double heightAboveEarth = pt.heightAboveTheEarth(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY(),radiusEarth); // Height above earth 
    
    // Finding out acceleration for gps
-   double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth); // I think objects height above earth
-   double radians = gpsAcc.degreeToRadian(pDemo->gps.getAngle()); // Convert degrees to radians
-   
-   // angle to the earth using gravity
+   // gravitaional acceleration due to gravity and the gps position
+   double gravitationHeight = gpsAcc.gravityH(gpsAcc.getGravity(), radiusEarth, heightAboveEarth); 
+   // angle to the earth using gravity: (0,0) is earth and then gps positions
    double gravityDirection = pt.directionOfGravityPull(0.0, 0.0,pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY());
    
    double ddx = gpsAcc.ddx(gravitationHeight, gravityDirection);  // Horizontal acceleration
@@ -157,14 +156,13 @@ void callBack(const Interface* pUI, void* p)
 
    //set new initial velocity for next frame
    
-   //Velocity newgpsVel(dx, dy);
-   //pDemo->gps.setVelocity(newgpsVel);
-   // im pretty sure that both of these work the same. I think the problem is with dx0 and dy0
-   pDemo->gps.getVelocity().setdx0(dx);
-   pDemo->gps.getVelocity().setdy0(dy);
+   Velocity newgpsVel(dx, dy);
+   pDemo->gps.setVelocity(newgpsVel);
+   // im pretty sure that both of these work the same.
+   //pDemo->gps.getVelocity().setdx0(dx);
+   //pDemo->gps.getVelocity().setdy0(dy);
 
    // Finding a new position
-   //pt x and y are 0 don't know if this important
    double x = pt.distanceFormula(pDemo->gps.getPosition().getMetersX(), dx, time, ddx); // new x position
    double y = pt.distanceFormula(pDemo->gps.getPosition().getMetersY(), dy, time, ddy);// new y position
    Position newPos(x, y);
