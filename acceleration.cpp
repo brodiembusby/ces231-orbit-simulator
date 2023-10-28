@@ -1,3 +1,12 @@
+/***********************************************************************
+ * Source File:
+ *    Acceleration : Acceleration due to gravity and velocity
+ * Author:
+ *    Aaron Fox, Brodie Busby
+ * Summary:
+ *    Derived class of Vector2D. Functions that return acceleration mathmatical proccesses
+ ************************************************************************/
+
 #include "acceleration.h"
 #include "position.h"
 #include "velocity.h"

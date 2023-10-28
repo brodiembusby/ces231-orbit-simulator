@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Source File:
+ *    Velocity : Velocity based on acceleration and time
+ * Author:
+ *    Aaron Fox, Brodie Busby
+ * Summary:
+ *    Derived class of Vector2D. contains assets to compute velocity in space
+ ************************************************************************/
 #pragma once
 
 #include "vector2D.h"

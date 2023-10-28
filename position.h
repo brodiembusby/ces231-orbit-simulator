@@ -2,7 +2,7 @@
  * Header File:
  *    Point : The representation of a position
  * Author:
- *    Br. Helfrich
+ *    Br. Helfrich, Brodie Busby, Aaron Fox
  * Summary:
  *    Everything we need to know about a location on the screen
  *    or the location on the field.
@@ -38,10 +38,6 @@ public:
    // The current position above the earth
    const double getAltitude() const;
    const Acceleration& getGravity() const;
-   double horizontalPositionConstantVelocity(double initialHorizontalPostion, double dx, double time);
-   double verticalPositionConstantVeloctity(double initalVerticalPosition, double dx, double time);
-   double distanceFormula(double initialDistance, double velocity, double  time, double acceleration); // acceleration will be ddx or ddy
-   double directionOfGravityPull(double Xe, double Ye, double Xs, double Ys);
 };
 
 /*********************************************
