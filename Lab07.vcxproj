@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
     <ClCompile Include="Lab07.cpp" />
-    <ClCompile Include="Math.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="rotation.cpp" />
     <ClCompile Include="test.cpp" />
@@ -152,7 +151,6 @@
   <ItemGroup>
     <ClInclude Include="acceleration.h" />
     <ClInclude Include="gps.h" />
-    <ClInclude Include="Math.h" />
     <ClInclude Include="orbitObject.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="rotation.h" />

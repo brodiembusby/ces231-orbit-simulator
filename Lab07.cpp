@@ -150,23 +150,25 @@ void callBack(const Interface* pUI, void* p)
    double ddy = gpsAcc.ddy(gravitationHeight, gravityDirection);  // Vertical acceleration
 
    // Finding out Velocity for gps
-   
+   // this might actually go after x and y but it slings down so maybe not
    double dx = gpsVel.dx(pDemo->gps.getVelocity().getdx0(), ddx, time); // horizontal velocity
    double dy = gpsVel.dy(pDemo->gps.getVelocity().getdy0(), ddy, time);  // vertical velocity
-
    //set new initial velocity for next frame
-   
    Velocity newgpsVel(dx, dy);
    pDemo->gps.setVelocity(newgpsVel);
-   // im pretty sure that both of these work the same.
-   //pDemo->gps.getVelocity().setdx0(dx);
-   //pDemo->gps.getVelocity().setdy0(dy);
 
    // Finding a new position
    double x = pt.distanceFormula(pDemo->gps.getPosition().getMetersX(), dx, time, ddx); // new x position
    double y = pt.distanceFormula(pDemo->gps.getPosition().getMetersY(), dy, time, ddy);// new y position
    Position newPos(x, y);
    pDemo->gps.setPosition(newPos);  // Setting new position
+
+   //cout << "X: " << x << "\n";
+   //cout << "dX: " << dx << "\n";
+   //cout << "ddX: " << ddx << "\n";
+   //cout << "y: " << y << "\n";
+   //cout << "dy: " << dy << "\n";
+   //cout << "ddy: " << dy << "\n";
 
    // draw satellites
    //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
