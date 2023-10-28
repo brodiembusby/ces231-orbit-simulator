@@ -45,7 +45,7 @@ public:
    // Operations
    void update(const double time);
 
-   // Overrides
+   // Abstract
    virtual void draw(ogstream& gout) const = 0;
 };
 

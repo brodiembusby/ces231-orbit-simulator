@@ -40,6 +40,7 @@ const double Acceleration::getGravity(const double height)
 {
    return GRAVITY_SEA_LEVEL * std::pow(RADIUS_EARTH / (RADIUS_EARTH + height), 2);
 }
+
 /************************************************************************
  * GET DELTA VELOCITY
  * Calculates the resulting velocity change over time from this acceleration.
