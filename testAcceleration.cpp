@@ -16,6 +16,18 @@
 // The asserts i believe will not be exact I read something about epsilon values but haven't looked at it
 // in depth
 
+
+void testAcceleration::run()
+{
+   testGravitySeaLevel();
+   testGravity100k();
+   testGravtiyAngleUp();
+   testGravityAngle45();
+   testGravityComponentStraightUpSeaLevel();
+   testGravityComponentDiagonal();
+}
+
+
 void testAcceleration::testGravitySeaLevel() {
 
    // SETUP
