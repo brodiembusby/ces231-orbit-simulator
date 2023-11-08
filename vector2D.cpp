@@ -28,6 +28,15 @@ Vector2D& Vector2D::operator = (const Vector2D& pt)
 }
 
 /******************************************
+ * Vector2D : Comparison
+ * compares two points
+ *****************************************/
+bool Vector2D::operator == (const Vector2D& pt)
+{
+
+   return this->x == pt.x && this->y == pt.y;
+}
+/******************************************
  * Vector2D : INCREMENT
  * Adds the components
  *****************************************/

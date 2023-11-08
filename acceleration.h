@@ -13,6 +13,7 @@
 
 class Acceleration : public Vector2D
 {
+   friend testAcceleration;
 private:
    static const double getGravity(const double height);
    static const double getGravityAngle(const Position& pos);

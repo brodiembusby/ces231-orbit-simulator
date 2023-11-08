@@ -24,6 +24,7 @@ public:
    Vector2D(double x, double y);
    Vector2D(const Vector2D& pt) : x(pt.x), y(pt.y) {}
    Vector2D& operator = (const Vector2D& pt);
+   bool operator == (const Vector2D& pt);
    void operator += (const Vector2D& pt);
 
    // getters
