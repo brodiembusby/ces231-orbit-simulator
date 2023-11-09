@@ -1,6 +1,6 @@
 #pragma once
 
-class  testAcceleration
+class TestAcceleration
 {
 public:
    void run();

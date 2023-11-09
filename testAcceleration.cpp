@@ -17,7 +17,7 @@
 // in depth
 
 
-void testAcceleration::run()
+void TestAcceleration::run()
 {
    testGravitySeaLevel();
    testGravity100k();
@@ -28,7 +28,7 @@ void testAcceleration::run()
 }
 
 
-void testAcceleration::testGravitySeaLevel() {
+void TestAcceleration::testGravitySeaLevel() {
 
    // SETUP
    Acceleration a;
@@ -38,7 +38,7 @@ void testAcceleration::testGravitySeaLevel() {
    //VERIFY
    assert(gravity == 9.80665);
 }
-void testAcceleration::testGravity100k() {
+void TestAcceleration::testGravity100k() {
  
    // SETUP
    Acceleration a;
@@ -48,7 +48,7 @@ void testAcceleration::testGravity100k() {
    //VERIFY
    assert(gravity == 9.5);
 }
-void testAcceleration::testGravtiyAngleUp() {
+void TestAcceleration::testGravtiyAngleUp() {
   
    // SETUP
    Acceleration a;
@@ -59,7 +59,7 @@ void testAcceleration::testGravtiyAngleUp() {
    //VERIFY
    assert(gravity == testPi);
 }
-void testAcceleration::testGravityAngle45() {
+void TestAcceleration::testGravityAngle45() {
  
    // SETUP
    Acceleration a;
@@ -70,7 +70,7 @@ void testAcceleration::testGravityAngle45() {
    //VERIFY
    assert(gravity == testPi);
 }
-void testAcceleration::testGravityComponentStraightUpSeaLevel() {
+void TestAcceleration::testGravityComponentStraightUpSeaLevel() {
    
    // SETUP
    Position pos(0, 6378000);
@@ -82,7 +82,7 @@ void testAcceleration::testGravityComponentStraightUpSeaLevel() {
    assert(a == testAcc);
 
 }
-void testAcceleration::testGravityComponentDiagonal() {
+void TestAcceleration::testGravityComponentDiagonal() {
    // SETUP
    Position pos(-6478000, 6478000);
 

@@ -1,16 +1,17 @@
 #pragma once
-class testVector2D
+class TestVector2D
 {
 public:
-   void run();
+   void run() const;
 
 private:
-   void testHorizontalComponentAngle();
-   void testHoriztontalComponentMagnitude();
-   void testVerticalComponnentAngel();
-   void testverticalComponentMagnitude();
-   void testAssignment();
-   void testIncrement();
-   void testComparison();
+   void testHorizontalComponentAngle() const;
+   void testHoriztontalComponentMagnitude() const;
+   void testVerticalComponentAngle() const;
+   void testverticalComponentMagnitude() const;
+   void testAssignment() const;
+   void testIncrement() const;
+   void testComparison() const;
+   void testComparisonUnequal() const;
 };
 
