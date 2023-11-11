@@ -28,6 +28,10 @@ void TestVector2D::run() const
    testComparisonUnequal();
 }
 
+/*
+   TEST HORIZONTAL COMPONENT ANGLE
+   Tests getHorizontalComponent so that it is using cos correctly.
+*/
 void TestVector2D::testHorizontalComponentAngle() const {
    // SETUP
 
@@ -38,6 +42,10 @@ void TestVector2D::testHorizontalComponentAngle() const {
    assert(component == 0);
 }
 
+/*
+   TEST HORIZONTAL COMPONENT MAGNITUDE
+   Tests getHorizontalComponent so that it is multiplying the magnitude correctly.
+*/
 void TestVector2D::testHoriztontalComponentMagnitude() const {
    // SETUP
 
@@ -48,6 +56,10 @@ void TestVector2D::testHoriztontalComponentMagnitude() const {
    assert(component == -12);
 }
 
+/*
+   TEST VERTICAL COMPONENT ANGLE
+   Tests getVerticalComponent so that it is using sin correctly.
+*/
 void TestVector2D::testVerticalComponentAngle() const {
    // SETUP
 
@@ -58,6 +70,10 @@ void TestVector2D::testVerticalComponentAngle() const {
    assert(component == 1);
 }
 
+/*
+   TEST VERTICAL COMPONENT MAGNITUDE
+   Tests getVerticalComponent so that it is multiplying the magnitude correctly.
+*/
 void TestVector2D::testverticalComponentMagnitude() const {
    // SETUP
 
@@ -68,6 +84,10 @@ void TestVector2D::testverticalComponentMagnitude() const {
    assert(component == 12 * sin(M_PI / 4));
 }
 
+/*
+   TEST ASSIGNMENT
+   Tests that the assignment operator only assigns the underlying fields.
+*/
 void TestVector2D::testAssignment() const {
    // SETUP
    Position pos1(0, 0);
@@ -80,6 +100,10 @@ void TestVector2D::testAssignment() const {
    assert(&pos1 != &pos2);
 }
 
+/*
+   TEST INCREMENT
+   Tests that incrementing with another position works correctly.
+*/
 void TestVector2D::testIncrement() const {
    // SETUP
    Position pos1(0, 0);
@@ -92,6 +116,10 @@ void TestVector2D::testIncrement() const {
    assert(pos1 == pos2);
 }
 
+/*
+   TEST COMPARISON
+   Tests that equality works correctly.
+*/
 void TestVector2D::testComparison() const {
    // SETUP
    Position pos1(1, 2);
@@ -104,6 +132,10 @@ void TestVector2D::testComparison() const {
    assert(equal);
 }
 
+/*
+   TEST COMPARISON
+   Tests that inequality works correctly.
+*/
 void TestVector2D::testComparisonUnequal() const {
    // SETUP
    Position pos1(1, 2);

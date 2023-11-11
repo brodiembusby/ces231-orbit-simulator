@@ -27,7 +27,10 @@ void TestAcceleration::run()
    testGravityComponentDiagonal();
 }
 
-
+/*
+   TEST GRAVITY SEA LEVEL
+   Tests that gravity is accurate at sea level.
+*/
 void TestAcceleration::testGravitySeaLevel() {
 
    // SETUP
@@ -38,6 +41,11 @@ void TestAcceleration::testGravitySeaLevel() {
    //VERIFY
    assert(gravity == 9.80665);
 }
+
+/*
+   TEST GRAVITY 100K
+   Tests gravity at 100km altitude to verify it's using the correct algorithm.
+*/
 void TestAcceleration::testGravity100k() {
  
    // SETUP
@@ -48,6 +56,11 @@ void TestAcceleration::testGravity100k() {
    //VERIFY
    assert(gravity == 9.5);
 }
+
+/*
+   TEST GRAVITY ANGLE UP
+   Tests the angle of gravity at straight up (i.e. gravity is pulling straight down).
+*/
 void TestAcceleration::testGravtiyAngleUp() {
   
    // SETUP
@@ -59,6 +72,11 @@ void TestAcceleration::testGravtiyAngleUp() {
    //VERIFY
    assert(gravity == testPi);
 }
+
+/*
+   TEST GRAVITY ANGLE 45
+   Tests the angle of gravity at a 45 degree angle.
+*/
 void TestAcceleration::testGravityAngle45() {
  
    // SETUP
@@ -70,6 +88,11 @@ void TestAcceleration::testGravityAngle45() {
    //VERIFY
    assert(gravity == testPi);
 }
+
+/*
+   TEST GRAVITY COMPONENT STRAIGHT UP SEA LEVEL
+   Tests the gravity component at sea level straight up (i.e. gravity is pulling straight down).
+*/
 void TestAcceleration::testGravityComponentStraightUpSeaLevel() {
    
    // SETUP
@@ -82,6 +105,11 @@ void TestAcceleration::testGravityComponentStraightUpSeaLevel() {
    assert(a == testAcc);
 
 }
+
+/*
+   TEST GRAVITY COMPONENT DIAGONAL
+   Tests gravity component at 100km at a 45 degree angle.
+*/
 void TestAcceleration::testGravityComponentDiagonal() {
    // SETUP
    Position pos(-6478000, 6478000);
