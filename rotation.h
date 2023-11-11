@@ -17,6 +17,11 @@ public:
    Rotation() : angle(0), speed(0) {}
    Rotation(double angle) : angle(angle), speed(0) {}
    Rotation(double angle, double speed) : angle(angle), speed(speed) {}
+   Rotation(const Rotation& rhs)
+   {
+      this->angle = rhs.angle;
+      this->speed = rhs.speed;
+   }
 
    double getAngle() const { return angle; }
    double getSpeed() const { return speed; }
