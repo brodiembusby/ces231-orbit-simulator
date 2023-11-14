@@ -12,6 +12,7 @@
 
 class Rotation
 {
+   friend class TestRotation;
 public:
 
    Rotation() : angle(0), speed(0) {}
@@ -29,7 +30,7 @@ public:
    void setAngle(double angle) { this->angle = angle; }
    void setSpeed(double speed) { this->speed = speed; }
 
-   void update(const double time) { angle += speed * TIME; }
+   void update(const double time) { angle += speed * time; }
 
 private:
    double angle;

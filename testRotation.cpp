@@ -24,7 +24,9 @@ void TestRotation::run()
 void TestRotation::testUpdateSmallTime()
 {
    // SETUP
-   Rotation EarthRot(.03, 3);
+   Rotation EarthRot;
+   EarthRot.angle = .03;
+   EarthRot.speed = 3;
    double time = 4;
 
    // EXERCISE
@@ -38,7 +40,9 @@ void TestRotation::testUpdateSmallTime()
 void TestRotation::testUpdateBigTime()
 {
    // SETUP
-   Rotation EarthRot(.03, 3);
+   Rotation EarthRot;
+   EarthRot.angle = .03;
+   EarthRot.speed = 3;
    double time = 30;
 
    // EXERCISE
@@ -52,7 +56,9 @@ void TestRotation::testUpdateBigTime()
 void TestRotation::testSetFromRotation()
 {
    // SETUP
-   Rotation EarthRot(.03, 3);
+   Rotation EarthRot;
+   EarthRot.angle = .03;
+   EarthRot.speed = 3;
 
    // EXERCISE
    Rotation GPS(EarthRot);
@@ -85,7 +91,9 @@ void TestRotation::testSetAngle()
 void TestRotation::testSetSpeed()
 {
    // SETUP
-   Rotation EarthRot(.03, 3);
+   Rotation EarthRot;
+   EarthRot.angle = .03;
+   EarthRot.speed = 3;
    double speed = 43;
 
    // EXERCISE

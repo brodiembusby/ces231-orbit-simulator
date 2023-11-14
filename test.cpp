@@ -21,4 +21,5 @@ void testRunner()
    TestPosition().run();
    TestAcceleration().run();
    TestRotation().run();
+   cout << "All test pass";
 }

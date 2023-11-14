@@ -19,6 +19,7 @@
 #include "velocity.h"   // for Velocity class
 #include "rotation.h"   // for Rotation class
 #include "constants.h"
+#include "test.h"       // for TEST
 
 using namespace std;
 
@@ -112,6 +113,8 @@ int main(int argc, char** argv)
 
    // Initialize the demo
    Demo demo(ptUpperRight);
+
+   testRunner();
 
    // set everything into action
    ui.run(callBack, &demo);
