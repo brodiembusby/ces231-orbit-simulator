@@ -106,7 +106,7 @@ void TestAcceleration::testGravityComponentStraightUpSeaLevel() {
    //VERIFY
    assert(closeEnough(a.getMetersX(), testAcc.getMetersX(), .001) == true);
    assert(closeEnough(a.getMetersY(), testAcc.getMetersY(), .001) == true);
-   //assert(a == testAcc);
+
 
 }
 
