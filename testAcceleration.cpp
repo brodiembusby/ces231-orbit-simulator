@@ -13,9 +13,12 @@
 #define _USE_MATH_DEFINES  // For PI
 #include <math.h>          // For PI
 
-// The asserts i believe will not be exact I read something about epsilon values but haven't looked at it
-// in depth
 
+// function to resolve floating point differences
+bool closeEnough(double value, double test, double tolerance)  {
+   double difference = value - test;
+   return(difference >= -tolerance) && (difference <= tolerance);
+}
 
 void TestAcceleration::run()
 {
@@ -37,7 +40,7 @@ void TestAcceleration::testGravitySeaLevel() {
    Acceleration a;
 
    //EXERCISE
-   double gravity = a.getGravity(6378000);
+   double gravity = a.getGravity(0);
    //VERIFY
    assert(gravity == 9.80665);
 }
@@ -52,9 +55,9 @@ void TestAcceleration::testGravity100k() {
    Acceleration a;
 
    //EXERCISE
-   double gravity = a.getGravity(6478000);
+   double gravity = a.getGravity(100000);
    //VERIFY
-   assert(gravity == 9.5);
+   assert(closeEnough(gravity, 9.5, .01) == true) ;
 }
 
 /*
@@ -97,12 +100,13 @@ void TestAcceleration::testGravityComponentStraightUpSeaLevel() {
    
    // SETUP
    Position pos(0, 6378000);
-
    //EXERCISE
    Acceleration a = a.getGravityComponent(pos);
    Acceleration testAcc(0, -9.80665);
    //VERIFY
-   assert(a == testAcc);
+   assert(closeEnough(a.getMetersX(), testAcc.getMetersX(), .001) == true);
+   assert(closeEnough(a.getMetersY(), testAcc.getMetersY(), .001) == true);
+   //assert(a == testAcc);
 
 }
 
@@ -118,5 +122,7 @@ void TestAcceleration::testGravityComponentDiagonal() {
    Acceleration a = a.getGravityComponent(pos);
    Acceleration testAcc(3.361, -3.361);
    //VERIFY
-   assert(a == testAcc);
+   assert(closeEnough(a.getMetersX(), testAcc.getMetersX(), .001) == true);
+   assert(closeEnough(a.getMetersY(), testAcc.getMetersY(), .001) == true);
+
 }
