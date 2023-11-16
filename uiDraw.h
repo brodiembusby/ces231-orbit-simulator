@@ -74,6 +74,7 @@ public:
    virtual void drawShip(const Position& center, double rotation, bool thrust);
 
    virtual void drawEarth(const Position& center, double rotation);
+   virtual void drawMoon(const Position& center, double rotation);
 
    virtual void drawStar(const Position& point, unsigned char phase);
 
@@ -125,6 +126,7 @@ public:
    void drawShip(const Position& center, double rotation, bool thrust);
 
    void drawEarth(const Position& center, double rotation);
+   void drawMoon(const Position& center, double rotation);
 
    void drawStar(const Position& point, unsigned char phase);
 };
@@ -173,6 +175,7 @@ public:
    void drawShip(const Position& center, double rotation, bool thrust);
 
    void drawEarth(const Position& center, double rotation);
+   void drawMoon(const Position& center, double rotation);
 
    void drawStar(const Position& point, unsigned char phase);
 };

@@ -84,6 +84,12 @@ void callBack(const Interface* pUI, void* p)
    drawPoint.setPixelsX(0);
    drawPoint.setPixelsY(0);
    gout.drawEarth(drawPoint, pDemo->rotationEarth.getAngle());
+   
+   drawPoint.setPixelsX(500);
+   drawPoint.setPixelsY(500);
+   Position moonPoint;
+
+   gout.drawMoon(moonPoint, pDemo->rotationEarth.getAngle());
 }
 
 double Position::metersFromPixels = 40.0;
