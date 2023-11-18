@@ -12,13 +12,7 @@
 #include "assert.h"        // For asserts
 #define _USE_MATH_DEFINES  // For PI
 #include <math.h>          // For PI
-
-
-// function to resolve floating point differences
-bool closeEnough(double value, double test, double tolerance)  {
-   double difference = value - test;
-   return(difference >= -tolerance) && (difference <= tolerance);
-}
+#include "test.h"          // For close enough
 
 void TestAcceleration::run()
 {

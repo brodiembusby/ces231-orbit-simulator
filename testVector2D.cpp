@@ -13,6 +13,7 @@
 #include "assert.h"				// For asserts
 #define _USE_MATH_DEFINES		// For PI
 #include <math.h>				   // For PI
+#include "test.h"             // For close enough
 
 #include "testVector2D.h"
 
@@ -39,7 +40,7 @@ void TestVector2D::testHorizontalComponentAngle() const {
    auto component = Vector2D::getHorizontalComponent(1, M_PI / 2);
 
    //VERIFY
-   assert(component == 0);
+   assert(closeEnough(component, 0, 0.01));
 }
 
 /*
@@ -53,7 +54,7 @@ void TestVector2D::testHoriztontalComponentMagnitude() const {
    auto component = Vector2D::getHorizontalComponent(12, M_PI);
 
    //VERIFY
-   assert(component == -12);
+   assert(closeEnough(component, -12, 0.01));
 }
 
 /*
@@ -67,7 +68,7 @@ void TestVector2D::testVerticalComponentAngle() const {
    auto component = Vector2D::getVerticalComponent(1, M_PI / 2);
 
    //VERIFY
-   assert(component == 1);
+   assert(closeEnough(component, 1, 0.01));
 }
 
 /*
@@ -81,7 +82,7 @@ void TestVector2D::testverticalComponentMagnitude() const {
    auto component = Vector2D::getVerticalComponent(12, M_PI / 4);
 
    //VERIFY
-   assert(component == 12 * sin(M_PI / 4));
+   assert(closeEnough(component, 12 * sin(M_PI / 4), 0.01));
 }
 
 /*

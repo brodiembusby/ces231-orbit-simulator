@@ -10,3 +10,5 @@
 #pragma once
 
 void testRunner();
+
+bool closeEnough(double value, double test, double tolerance);
