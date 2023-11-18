@@ -2,7 +2,7 @@
  * Header File:
  *    Test Position : Test the Position class
  * Author:
- *    Br. Helfrich
+ *    Br. Helfrich, Aaron Fox
  * Summary:
  *    All the unit tests for Position
  ************************************************************************/
@@ -13,6 +13,7 @@
 #include <iostream>
 #include "position.h"
 #include <cassert>
+#include "test.h"    // For close enough
 
 using namespace std;
 
@@ -39,13 +40,6 @@ public:
    }
    
 private:
-   // utility funciton because floating point numbers are approximations
-   bool closeEnough(double value, double test, double tolerence) const
-   {
-      double difference = value - test;
-      return (difference >= -tolerence) && (difference <= tolerence);
-   }
-
    void defaultConstructor() const
    {  // setup
       // exercise
