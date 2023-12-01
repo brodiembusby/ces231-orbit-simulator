@@ -120,7 +120,7 @@ int main(int argc, char** argv)
    // Initialize the demo
    Demo demo(ptUpperRight);
 
-   testRunner();
+   //testRunner();
 
    // set everything into action
    ui.run(callBack, &demo);
