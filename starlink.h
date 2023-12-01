@@ -13,7 +13,7 @@ class Starlink :
     public OrbitObject
 {
 public:
-   void draw(ogstream& gout) const override { gout.drawStarlink(position, angle); }
-   void breakApart(ogstream& gout, Starlink& starlink)
+   void draw(ogstream& gout) const override { gout.drawStarlink(position, rotation.getAngle()); }
+   void breakApart(ogstream& gout, Starlink& starlink);
 };
 

@@ -13,7 +13,7 @@ class Hubble :
 {
 
 public:
-   void draw(ogstream& gout) const override { gout.drawHubble(position, angle); }
+   void draw(ogstream& gout) const override { gout.drawHubble(position, rotation.getAngle()); }
    void breakApart(ogstream& gout, Hubble& hubble);
 };
 

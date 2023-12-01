@@ -11,11 +11,11 @@
 #include "acceleration.h"
 #include "velocity.h"
 
-/************************************************************************
-* UPDATE
-* Performs a physics tick and updates the object's components.
-*    INPUT  time                The amount of time in seconds to simulate.
-************************************************************************/
+ /************************************************************************
+ * UPDATE
+ * Performs a physics tick and updates the object's components.
+ *    INPUT  time                The amount of time in seconds to simulate.
+ ************************************************************************/
 void OrbitObject::update(const double time)
 {
    // Set acceleration to gravity
@@ -29,4 +29,15 @@ void OrbitObject::update(const double time)
    // Update position
    const Position dP = velocity.getDeltaPosition(time);
    position += dP;
+}
+
+
+/************************************************************************
+* CHECK COLLISION
+* Checks if this object is colliding with another.
+*    OrbitObject  other          The other object.
+************************************************************************/
+const bool OrbitObject::checkCollision(const OrbitObject& other) const {
+   const double distance = Position::getDistance(position, other.position);
+   return distance <= getRadius() + other.getRadius();
 }

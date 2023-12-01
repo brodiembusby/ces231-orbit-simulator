@@ -57,3 +57,17 @@ const Acceleration& Position::getGravity() const
 {
    return Acceleration::getGravityComponent(*this);
 }
+
+/************************************************************************
+ * GET DISTANCE
+ * Calculates the distance between two positions in meters.
+ *    INPUT  p1                  The first position.
+ *           p2                  The second position.
+ *    OUTPUT                     The distance between the two positions in meters.
+ ************************************************************************/
+const double Position::getDistance(const Position& p1, const Position& p2)
+{
+   auto dx = p1.getMetersX() - p2.getMetersX();
+   auto dy = p1.getMetersY() - p2.getMetersY();
+   return sqrt(pow(dx, 2) + pow(dy, 2));
+}

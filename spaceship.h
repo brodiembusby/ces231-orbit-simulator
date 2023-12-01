@@ -13,6 +13,7 @@
 #include "acceleration.h"
 #include "bullet.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
+#include <vector>
 
 class Spaceship : public OrbitObject
 {
@@ -36,6 +37,6 @@ public:
    void draw(ogstream& gout) const override { gout.drawShip(position, rotation.getAngle(), isThrusting); }
    void rotateLeft() { rotation.addAngle(-ROTATION_SPEED); }
    void rotateRight() { rotation.addAngle(ROTATION_SPEED); }
-   Bullet* shoot() const;
+   void shoot(std::vector<OrbitObject*>& orbitObjects) const;
 };
 
