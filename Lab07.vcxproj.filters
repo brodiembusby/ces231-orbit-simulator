@@ -51,6 +51,18 @@
     <ClCompile Include="testRotation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="hubble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sputnik.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dragon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="starlink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="spaceship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,6 +114,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testRotation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hubble.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sputnik.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dragon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="starlink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="spaceship.h">
