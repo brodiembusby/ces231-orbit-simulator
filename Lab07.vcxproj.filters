@@ -60,6 +60,9 @@
     <ClCompile Include="dragon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="starlink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,9 +87,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="acceleration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="orbitObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gps.h">
@@ -120,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="starlink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="orbitObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

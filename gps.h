@@ -1,8 +1,8 @@
 /***********************************************************************
- * Source File:
+ * Header File:
  *    GPS: GPS satellite in geosynchronous orbit.
  * Author:
- *    Aaron Fox
+ *    Aaron Fox, Brodie Busby
  * Summary:
  *    The class for the GPS satellite type.
  ************************************************************************/
@@ -16,5 +16,6 @@ class GPS : public OrbitObject
 {
 public:
    void draw(ogstream& gout) const override { gout.drawGPS(position, angle); }
+   void breakApart(ogstream& gout, GPS& gps);
 };
 

@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Hubble
+ * Author:
+ *    Brodie Busby, Cameron Lybbert
+ * Summary:
+ *    header file for Hubble
+ ************************************************************************/
 #pragma once
 #include "orbitObject.h"
 class Hubble :
@@ -6,5 +14,6 @@ class Hubble :
 
 public:
    void draw(ogstream& gout) const override { gout.drawHubble(position, angle); }
+   void breakApart(ogstream& gout, Hubble& hubble);
 };
 

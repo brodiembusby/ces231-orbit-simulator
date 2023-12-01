@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Sputnik
+ * Author:
+ *    Brodie Busby, Cameron Lybbert
+ * Summary:
+ *    header file for Sputnik
+ ************************************************************************/
 #pragma once
 #include "orbitObject.h"
 class Sputnik :

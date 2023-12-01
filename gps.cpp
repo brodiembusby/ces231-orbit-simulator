@@ -1,37 +1,37 @@
 /***********************************************************************
  * Source File:
- *    dragon : Methods related to dragon
+ *    GPS : Methods related to GPS satellite
  * Author:
  *    Brodie Busby
  * Summary:
- *    Derived class of OrbitObject. Methods that return dragon parts
+ *    Derived class of OrbitObject. Methods that return GPS parts
  ************************************************************************/
 
 #pragma once
-#include "dragon.h"
+#include "gps.h"
 
 
 
 /************************************************************************
 * breakApart
 *    Takes
-*    INPUT      gout   graphical output 
-*               dragon dragon object       
+*    INPUT      gout   graphical output
+*               gps gps object
 ************************************************************************/
-void Dragon::breakApart(ogstream& gout, Dragon& dragon) {
-   
+void GPS::breakApart(ogstream& gout, GPS& gps) {
+
    // I dont know what rotation does but it does some wild things
    double rotation = 10;
    // Instatiate new positions for each part
-   Position initPosition(dragon.getPosition());
-   Position leftPos(dragon.getPosition());
-   Position rightPos(dragon.getPosition());
+   Position initPosition(gps.getPosition());
+   Position leftPos(gps.getPosition());
+   Position rightPos(gps.getPosition());
    // Add four pixels so they don't collide
    leftPos.addPixelsX(10);
    rightPos.addPixelsX(-10);
-   // draw each dragon part
-   gout.drawCrewDragonCenter(initPosition, rotation);
-   gout.drawCrewDragonLeft(initPosition, rotation, leftPos);
-   gout.drawCrewDragonRight(initPosition, rotation, rightPos);
+   // draw each gps part
+   gout.drawGPSCenter(initPosition, rotation);
+   gout.drawGPSLeft(initPosition, rotation, leftPos);
+   gout.drawGPSRight(initPosition, rotation, rightPos);
 
 }
