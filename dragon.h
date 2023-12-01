@@ -13,7 +13,7 @@ class Dragon :
     public OrbitObject
 {
 public:
-   void draw(ogstream& gout) const override { gout.drawCrewDragon(position, angle); }
+   void draw(ogstream& gout) const override { gout.drawCrewDragon(position, rotation.getAngle()); }
    void breakApart(ogstream& gout, Dragon& dragon);
 };
 

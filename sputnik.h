@@ -13,6 +13,6 @@ class Sputnik :
 {
 
 public:
-   void draw(ogstream& gout) const override { gout.drawHubble(position, angle); }
+   void draw(ogstream& gout) const override { gout.drawSputnik(position, rotation.getAngle()); }
 };
 
