@@ -12,6 +12,7 @@
 #include "position.h"
 #include "velocity.h"
 #include "acceleration.h"
+#include "rotation.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 
 class OrbitObject
@@ -19,11 +20,11 @@ class OrbitObject
 protected:
    Position position;
    Velocity velocity;
-   Acceleration acceleration;
-   double angle;
+   Rotation rotation;
+   virtual void accelerateCallback(Acceleration& acceleration) const {}
 
 public:
-   OrbitObject() : position(), velocity(), acceleration(), angle(0.0) {}
+   OrbitObject() : position(), velocity(), rotation() {}
    OrbitObject(const Position& position, const Velocity& velocity) : OrbitObject()
    {
       this->position = position;
@@ -33,14 +34,12 @@ public:
    // Getters
    Position& getPosition() { return position; }
    Velocity& getVelocity() { return velocity; }
-   Acceleration& getAcceleration() { return acceleration; }
-   double& getAngle() { return angle; }
+   Rotation& getRotation() { return rotation; }
 
    // Setters
    void setPosition(const Position& position) { this->position = position; }
    void setVelocity(const Velocity& velocity) { this->velocity = velocity; }
-   void setAcceleration(const Acceleration& acceleration) { this->acceleration = acceleration; }
-   void setAngle(const double angle) { this->angle = angle; }
+   void setRotation(const Rotation& rotation) { this->rotation = rotation; }
 
    // Operations
    void update(const double time);

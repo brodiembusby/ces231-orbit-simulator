@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="orbitObject.cpp" />
     <ClCompile Include="position.cpp" />
+    <ClCompile Include="spaceship.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="testAcceleration.cpp" />
     <ClCompile Include="testRotation.cpp" />
@@ -154,11 +156,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="acceleration.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="gps.h" />
     <ClInclude Include="orbitObject.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="rotation.h" />
+    <ClInclude Include="spaceship.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testAcceleration.h" />
     <ClInclude Include="testPosition.h" />

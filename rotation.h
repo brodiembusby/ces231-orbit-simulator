@@ -30,6 +30,7 @@ public:
    void setAngle(double angle) { this->angle = angle; }
    void setSpeed(double speed) { this->speed = speed; }
 
+   void addAngle(double delta) { this->angle += delta; }
    void update(const double time) { angle += speed * time; }
 
 private:
