@@ -18,7 +18,9 @@
 #include "gps.h"        // for GPS satellite
 #include "velocity.h"   // for Velocity class
 #include "rotation.h"   // for Rotation class
+#include "spaceship.h"  // for Spaceship class
 #include "constants.h"
+#include <set>          // For orbit objects
 #include "test.h"       // for TEST
 
 using namespace std;
@@ -31,19 +33,30 @@ class Demo
 {
 public:
    Demo(Position ptUpperRight) :
-      ptUpperRight(ptUpperRight), gps(),
-      rotationEarth(0, EARTH_SPEED)
+      ptUpperRight(ptUpperRight), orbitObjects(),
+      rotationEarth(0, EARTH_SPEED),
+      rotationMoon(0, MOON_SPEED),
+      ship()
    {
       // Initialize GPS satellite.
-      gps.getPosition().setMetersY(42164000.0);
-      gps.getPosition().setMetersX(0.0);
-      Velocity vel(-3100.0, 0.0);
-      gps.setVelocity(vel);
+      GPS* gps = new GPS();
+      gps->getPosition().setMetersY(42164000.0);
+      gps->getPosition().setMetersX(0.0);
+      gps->setVelocity(Velocity(-3100, 0));
+      orbitObjects.insert(gps);
+
+      // Initialize spaceship
+      ship.getPosition().setPixelsX(-450);
+      ship.getPosition().setPixelsY(450);
+      ship.setVelocity(Velocity(0, -2000));
+      orbitObjects.insert(&ship);
    }
 
-   GPS gps;
+   set<OrbitObject*> orbitObjects;
    Position ptUpperRight;
    Rotation rotationEarth;
+   Rotation rotationMoon;
+   Spaceship ship;
 };
 
 /*************************************
@@ -60,36 +73,50 @@ void callBack(const Interface* pUI, void* p)
    Demo* pDemo = (Demo*)p;
 
    //
-   // perform all the game logic
+   // Spaceship interaction
    //
 
-   // rotate the earth
+   // Rotate
+   if (pUI->isLeft())
+      pDemo->ship.rotateLeft();
+   if (pUI->isRight())
+      pDemo->ship.rotateRight();
+
+   // Thrust
+   pDemo->ship.setThrustActive(pUI->isDown());
+
+   // Shoot
+   if (pUI->isSpace()) {
+      auto bullet = pDemo->ship.shoot();
+      pDemo->orbitObjects.insert(bullet);
+   }
+
+   // rotate the earth and moon
    pDemo->rotationEarth.update(TIME);
+   pDemo->rotationMoon.update(TIME);
 
-   // Move the satellite
-   pDemo->gps.update(TIME);
+   Position drawPoint;
+   ogstream gout;
 
+   for (const auto obj : pDemo->orbitObjects)
+   {
+      // Move the object.
+      obj->update(TIME);
 
-   //
-   // draw everything
-   //
-
-   Position drawPoint(pDemo->gps.getPosition());
-   ogstream gout(drawPoint);
-
-   // draw satellites
-   pDemo->gps.draw(gout);
+      // Draw the object.
+      obj->draw(gout);
+   }
 
    // draw the earth
    drawPoint.setPixelsX(0);
    drawPoint.setPixelsY(0);
    gout.drawEarth(drawPoint, pDemo->rotationEarth.getAngle());
-   
+
    drawPoint.setPixelsX(500);
    drawPoint.setPixelsY(500);
    Position moonPoint;
 
-   gout.drawMoon(moonPoint, pDemo->rotationEarth.getAngle());
+   gout.drawMoon(moonPoint, pDemo->rotationMoon.getAngle());
 }
 
 double Position::metersFromPixels = 40.0;
@@ -108,6 +135,8 @@ int WINAPI wWinMain(
 int main(int argc, char** argv)
 #endif // !_WIN32
 {
+   testRunner();
+
    // Initialize OpenGL
    Position ptUpperRight;
    ptUpperRight.setZoom(128000.0 /* 128km equals 1 pixel */);
@@ -119,8 +148,6 @@ int main(int argc, char** argv)
 
    // Initialize the demo
    Demo demo(ptUpperRight);
-
-   //testRunner();
 
    // set everything into action
    ui.run(callBack, &demo);

@@ -926,7 +926,8 @@ void ogstream::drawMoon(const Position& center, double rotation)
    {0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,},
    };
 
-   const double SCALE = 2.0;
+   const double SCALE = 1.0;
+   const double MOON_DISTANCE = 350;
 
    for (int y = 0; y < 50; y++)
       for (int x = 0; x < 50; x++)
@@ -947,8 +948,8 @@ void ogstream::drawMoon(const Position& center, double rotation)
                static_cast<int>(x * SCALE + SCALE),
                static_cast<int>(y * SCALE), colors[moon[y][x]] };
             Position pos;
-            pos.setPixelsX(115.0 * SCALE);
-            pos.setPixelsY(115.0 * SCALE);
+            pos.setPixelsX(MOON_DISTANCE * SCALE);
+            pos.setPixelsY(MOON_DISTANCE * SCALE);
             glDrawRect(center, pos, rect, rotation);
          }
 

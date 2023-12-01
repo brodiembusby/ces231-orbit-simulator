@@ -19,8 +19,8 @@
 void OrbitObject::update(const double time)
 {
    // Set acceleration to gravity
-   const Acceleration& gravity = position.getGravity();
-   acceleration = gravity;
+   Acceleration acceleration(position.getGravity());
+   accelerateCallback(acceleration);
 
    // Update velocity
    const Velocity& dV = acceleration.getDeltaVelocity(time);
