@@ -123,7 +123,7 @@ public:
       // Give 100 stars
       for (int i = 0; i < 200; i++)
       {
-         unsigned char phase = random(0, 100);
+         unsigned char phase = random(0, 200);
          Position starpos;
          starpos.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
          starpos.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
