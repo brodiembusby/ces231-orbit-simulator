@@ -20,7 +20,7 @@
 #include "hubble.h"     // for hubble satellite
 #include "dragon.h"     // for dragon satellite
 #include "starlink.h"   // for Starlink satellite
-
+#include "star.h"       // for Star
 #include "velocity.h"   // for Velocity class
 #include "rotation.h"   // for Rotation class
 #include "spaceship.h"  // for Spaceship class
@@ -119,9 +119,24 @@ public:
       ship.getPosition().setPixelsY(450);
       ship.setVelocity(Velocity(0, -2000));
       orbitObjects.push_back(&ship);
+
+      // Give 100 stars
+      for (int i = 0; i < 200; i++)
+      {
+         unsigned char phase = random(0, 100);
+         Position starpos;
+         starpos.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
+         starpos.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
+
+
+         Star* star = new Star(starpos, phase);
+
+         stars.push_back(star);
+      }
    }
 
    vector<OrbitObject*> orbitObjects;
+   vector<Star*> stars;
    Position ptUpperRight;
    Rotation rotationEarth;
    Rotation rotationMoon;
@@ -181,6 +196,16 @@ void callBack(const Interface* pUI, void* p)
    Position drawPoint;
    ogstream gout;
 
+   // Update and draw all the stars
+   for (const auto star : pDemo->stars)
+   {
+      // Update the phase
+      star->update();
+
+      // Draw it
+      star->draw(gout);
+   }
+
    // Update and draw all orbit objects
    for (const auto obj : pDemo->orbitObjects)
    {
@@ -199,6 +224,8 @@ void callBack(const Interface* pUI, void* p)
    drawPoint.setPixelsX(500);
    drawPoint.setPixelsY(500);
    Position moonPoint;
+
+   
 
    gout.drawMoon(moonPoint, pDemo->rotationMoon.getAngle());
 }
