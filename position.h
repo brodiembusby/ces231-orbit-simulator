@@ -38,6 +38,7 @@ public:
    // The current position above the earth
    const double getAltitude() const;
    const Acceleration& getGravity() const;
+   static const double getDistance(const Position& p1, const Position& p2);
 };
 
 /*********************************************

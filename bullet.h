@@ -19,4 +19,5 @@ protected:
 public:
    // Operations
    void draw(ogstream& gout) const override { gout.drawProjectile(position); }
+   const double getRadius() const override { return 0.5; }
 };

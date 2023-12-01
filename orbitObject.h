@@ -18,6 +18,7 @@
 class OrbitObject
 {
 protected:
+   
    Position position;
    Velocity velocity;
    Rotation rotation;
@@ -35,6 +36,8 @@ public:
    Position& getPosition() { return position; }
    Velocity& getVelocity() { return velocity; }
    Rotation& getRotation() { return rotation; }
+   virtual const double getRadius() const { return 0; }
+   const bool checkCollision(const OrbitObject& other) const;
 
    // Setters
    void setPosition(const Position& position) { this->position = position; }

@@ -31,14 +31,16 @@ public:
       nonDefaultConstructor();
       copyConstructor();
       assignment();
- 
+
       setPixels();
       setMeters();
-      
+
       addPixels();
       addMeters();
+
+      distance();
    }
-   
+
 private:
    void defaultConstructor() const
    {  // setup
@@ -85,7 +87,7 @@ private:
       assert(pos2.x == 4000.0);
       assert(pos2.y == 2000.0);
    }  // teardown
-   
+
    void setMeters() const
    {  // setup
       Position pos;
@@ -98,7 +100,7 @@ private:
       assert(pos.x == 5000.0);
       assert(pos.y == 3000.0);
    }  // teardown
- 
+
    void setPixels() const
    {  // setup
       Position pos;
@@ -111,7 +113,7 @@ private:
       assert(pos.x == 6000.0);
       assert(pos.y == 12000.0);
    }  // teardown
-   
+
    void addMeters() const
    {  // setup
       Position pos;
@@ -124,7 +126,7 @@ private:
       assert(pos.x == 400.0);
       assert(pos.y == 2400.0);
    }  // teardown
-   
+
    void addPixels() const
    {  // setup
       Position pos;
@@ -136,6 +138,23 @@ private:
       // verify
       assert(pos.x == 4000.0);
       assert(pos.y == 7000.0);
+   }  // teardown
+
+   void distance() const
+   {
+      // setup
+      Position p1;
+      p1.x = 0;
+      p1.y = 0;
+      Position p2;
+      p2.x = 3;
+      p2.y = 4;
+
+      // exercise
+      double distance = Position::getDistance(p1, p2);
+
+      // verify
+      assert(closeEnough(distance, 5, 0.01));
    }  // teardown
 
 };

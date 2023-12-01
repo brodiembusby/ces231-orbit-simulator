@@ -20,7 +20,7 @@
 #include "rotation.h"   // for Rotation class
 #include "spaceship.h"  // for Spaceship class
 #include "constants.h"
-#include <set>          // For orbit objects
+#include <vector>       // For orbit objects
 #include "test.h"       // for TEST
 
 using namespace std;
@@ -43,16 +43,16 @@ public:
       gps->getPosition().setMetersY(42164000.0);
       gps->getPosition().setMetersX(0.0);
       gps->setVelocity(Velocity(-3100, 0));
-      orbitObjects.insert(gps);
+      orbitObjects.push_back(gps);
 
       // Initialize spaceship
       ship.getPosition().setPixelsX(-450);
       ship.getPosition().setPixelsY(450);
       ship.setVelocity(Velocity(0, -2000));
-      orbitObjects.insert(&ship);
+      orbitObjects.push_back(&ship);
    }
 
-   set<OrbitObject*> orbitObjects;
+   vector<OrbitObject*> orbitObjects;
    Position ptUpperRight;
    Rotation rotationEarth;
    Rotation rotationMoon;
@@ -86,18 +86,33 @@ void callBack(const Interface* pUI, void* p)
    pDemo->ship.setThrustActive(pUI->isDown());
 
    // Shoot
-   if (pUI->isSpace()) {
-      auto bullet = pDemo->ship.shoot();
-      pDemo->orbitObjects.insert(bullet);
-   }
+   if (pUI->isSpace())
+      pDemo->ship.shoot(pDemo->orbitObjects);
 
    // rotate the earth and moon
    pDemo->rotationEarth.update(TIME);
    pDemo->rotationMoon.update(TIME);
 
+   // Collision detection
+   for (int i = 0; i < pDemo->orbitObjects.size(); i++)
+   {
+      auto obj1 = pDemo->orbitObjects[i];
+      for (int n = i + 1; n < pDemo->orbitObjects.size(); n++)
+      {
+         auto obj2 = pDemo->orbitObjects[n];
+         if (obj1->checkCollision(*obj2))
+         {
+            // TODO: Collision
+            // obj1 and obj2 need to break apart
+            // Add parts objects to pDemo->orbitObjects
+         }
+      }
+   }
+
    Position drawPoint;
    ogstream gout;
 
+   // Update and draw all orbit objects
    for (const auto obj : pDemo->orbitObjects)
    {
       // Move the object.

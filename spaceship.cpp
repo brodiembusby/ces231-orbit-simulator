@@ -3,6 +3,7 @@
 #include "vector2D.h"
 #include "bullet.h"
 #include "velocity.h"
+#include <vector>
 
 Position rotate(const Position& origin, double x, double y, double rotation);
 
@@ -25,7 +26,7 @@ void Spaceship::accelerateCallback(Acceleration& acceleration) const {
 * Shoots a projectile in the forward direction.
 *    OUTPUT  bullet       The projectile fired.
 ************************************************************************/
-Bullet* Spaceship::shoot() const {
+void Spaceship::shoot(std::vector<OrbitObject*>& orbitObjects) const {
    // Get bullet spawn point.
    Position ptShipFront = rotate(position, 0.0, 19.0, rotation.getAngle());
 
@@ -40,5 +41,6 @@ Bullet* Spaceship::shoot() const {
    Bullet* bullet = new Bullet();
    bullet->setPosition(ptShipFront);
    bullet->setVelocity(newVelocity);
-   return bullet;
+   
+   orbitObjects.push_back(bullet);
 }
