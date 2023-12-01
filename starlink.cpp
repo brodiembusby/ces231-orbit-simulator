@@ -27,8 +27,8 @@ void Starlink::breakApart(ogstream& gout, Starlink& starlink) {
    Position bodyPos(starlink.getPosition());
    Position arrayPos(starlink.getPosition());
    // Add four pixels so they don't collide
-   bodyPos.addPixelsX(10);
-   arrayPos.addPixelsX(-10);
+   bodyPos.addPixelsX(4);
+   arrayPos.addPixelsX(4);
    // draw each starlink part
    gout.drawStarlinkBody(initPosition, rotation, bodyPos);
    gout.drawStarlinkArray(initPosition, rotation, arrayPos);

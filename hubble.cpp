@@ -29,10 +29,10 @@ void Hubble::breakApart(ogstream& gout, Hubble& hubble) {
    Position computerPos(hubble.getPosition());
    Position telescopePos(hubble.getPosition());
    // Add four pixels so they don't collide
-   leftPos.addPixelsX(10);
-   rightPos.addPixelsX(-10);
-   computerPos.addPixelsY(10);
-   telescopePos.addPixelsY(-10);
+   leftPos.addPixelsX(4);
+   rightPos.addPixelsX(4);
+   computerPos.addPixelsY(4);
+   telescopePos.addPixelsY(4);
    // draw each hubble part
    gout.drawHubbleComputer(initPosition, rotation, telescopePos);
    gout.drawHubbleComputer(initPosition, rotation, computerPos);

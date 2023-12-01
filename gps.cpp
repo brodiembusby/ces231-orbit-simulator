@@ -27,8 +27,8 @@ void GPS::breakApart(ogstream& gout, GPS& gps) {
    Position leftPos(gps.getPosition());
    Position rightPos(gps.getPosition());
    // Add four pixels so they don't collide
-   leftPos.addPixelsX(10);
-   rightPos.addPixelsX(-10);
+   leftPos.addPixelsX(4);
+   rightPos.addPixelsX(4);
    // draw each gps part
    gout.drawGPSCenter(initPosition, rotation);
    gout.drawGPSLeft(initPosition, rotation, leftPos);

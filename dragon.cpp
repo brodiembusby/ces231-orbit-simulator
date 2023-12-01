@@ -27,8 +27,8 @@ void Dragon::breakApart(ogstream& gout, Dragon& dragon) {
    Position leftPos(dragon.getPosition());
    Position rightPos(dragon.getPosition());
    // Add four pixels so they don't collide
-   leftPos.addPixelsX(10);
-   rightPos.addPixelsX(-10);
+   leftPos.addPixelsX(4);
+   rightPos.addPixelsX(4);
    // draw each dragon part
    gout.drawCrewDragonCenter(initPosition, rotation);
    gout.drawCrewDragonLeft(initPosition, rotation, leftPos);
