@@ -191,7 +191,7 @@ void callBack(const Interface* pUI, void* p)
             // TODO: Collision
             // obj1 and obj2 need to break apart
             // Add parts objects to pDemo->orbitObjects
-            cout << "something happened" << endl;
+            cout << "Object Created repeatedly" << endl;
             
             pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + i);
             obj1->breakApart(pDemo->orbitObjects);
