@@ -19,10 +19,9 @@ class Spaceship : public OrbitObject
 {
 private:
    bool isThrusting;
-   bool Alive = true;
 
 protected:
-   void accelerateCallback(Acceleration& acceleration) const override;
+   void updateCallback(Acceleration& acceleration) override;
 
 public:
 
@@ -30,6 +29,9 @@ public:
    const double THRUST_AMOUNT = 2.0;      // Thrust in m/s^2
    const double ROTATION_SPEED = 0.1;     // Amount of radians the ship rotates every frame if the user holds an arrow key down.
    const double PROJECTILE_SPEED = 9000;  // Projectile speed in m/s.
+
+   // Getters
+   const double getRadius() const override { return 10; }
 
    // Setters
    void setThrustActive(bool active) { this->isThrusting = active; }   // Set whether the spaceship thruster is active.
@@ -40,7 +42,5 @@ public:
    void rotateLeft() { rotation.addAngle(-ROTATION_SPEED); }
    void rotateRight() { rotation.addAngle(ROTATION_SPEED); }
    void shoot(std::vector<OrbitObject*>& orbitObjects) const;
-   bool isAlive() { return Alive; }
-   void setDead() { Alive = false; }
 };
 

@@ -8,11 +8,12 @@
 Position rotate(const Position& origin, double x, double y, double rotation);
 
 /************************************************************************
-* ACCELERATE CALLBACK
-* Adds acceleration if the user is using the thruster.
+* UPDATE CALLBACK
+* Called every frame if any specific objects need to perform custom logic.
+* In this case, we want to add thrust.
 *    INPUT  acceleration                The current acceleration of the spaceship.
 ************************************************************************/
-void Spaceship::accelerateCallback(Acceleration& acceleration) const {
+void Spaceship::updateCallback(Acceleration& acceleration) {
    if (isThrusting) {
       const double horizontalThrust = Vector2D::getVerticalComponent(THRUST_AMOUNT, rotation.getAngle());   // Functions are swapped because 0 angles draws up, not to the right.
       const double verticalThrust = Vector2D::getHorizontalComponent(THRUST_AMOUNT, rotation.getAngle());

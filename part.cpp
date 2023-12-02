@@ -12,16 +12,16 @@ void Part::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    
    Fragment* fragments[7];
 
-   for (int i = 0; i <= 6; i++) {
-      fragments[i] = new Fragment();
-      Position pos(position);
-      pos.addPixelsX(i);
-      pos.addPixelsY(i);
-      fragments[i]->setRotation(rotation.getAngle());
-      fragments[i]->getPosition();
-      fragments[i]->setVelocity(vel);
-      orbitObjects.push_back(fragments[i]);
-   }
+   //for (int i = 0; i <= 6; i++) {
+   //   fragments[i] = new Fragment();
+   //   Position pos(position);
+   //   pos.addPixelsX(i);
+   //   pos.addPixelsY(i);
+   //   fragments[i]->setRotation(rotation.getAngle());
+   //   fragments[i]->getPosition();
+   //   fragments[i]->setVelocity(vel);
+   //   orbitObjects.push_back(fragments[i]);
+   //}
 
 
 }

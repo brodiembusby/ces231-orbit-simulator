@@ -115,10 +115,11 @@ public:
       orbitObjects.push_back(starlink);
 
       // Initialize spaceship
-      ship.getPosition().setPixelsX(-450);
-      ship.getPosition().setPixelsY(450);
-      ship.setVelocity(Velocity(0, -2000));
-      orbitObjects.push_back(&ship);
+      ship = new Spaceship();
+      ship->getPosition().setPixelsX(-450);
+      ship->getPosition().setPixelsY(450);
+      ship->setVelocity(Velocity(0, -2000));
+      orbitObjects.push_back(ship);
 
       // Give 100 stars
       for (int i = 0; i < 200; i++)
@@ -140,8 +141,29 @@ public:
    Position ptUpperRight;
    Rotation rotationEarth;
    Rotation rotationMoon;
-   Spaceship ship;
+   Spaceship* ship;
 };
+
+/************************************************************************
+* DESTROY OBJECT
+* Destroys an object in orbit, removing it from the collection and deleting it from memory.
+*    Demo*        pDemo                   The game instance.
+*    OrbitObject* obj                     The object to delete.
+*    int          index                   The index of the object to delete.
+************************************************************************/
+void destroyObject(Demo* pDemo, OrbitObject* obj, const int index) {
+
+   // Check if the object is the spaceship.
+   if (obj == pDemo->ship)
+   {
+      pDemo->ship = nullptr;
+      assert(false);          // Not sure what to do when main ship crashes.
+   }
+
+   pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + index);
+   obj->breakApart(pDemo->orbitObjects);
+   delete obj;
+}
 
 /*************************************
  * All the interesting work happens here, when
@@ -160,18 +182,20 @@ void callBack(const Interface* pUI, void* p)
    // Spaceship interaction
    //
 
-   // Rotate
-   if (pUI->isLeft())
-      pDemo->ship.rotateLeft();
-   if (pUI->isRight())
-      pDemo->ship.rotateRight();
+   if (pDemo->ship != nullptr) {
+      // Rotate
+      if (pUI->isLeft())
+         pDemo->ship->rotateLeft();
+      if (pUI->isRight())
+         pDemo->ship->rotateRight();
 
-   // Thrust
-   pDemo->ship.setThrustActive(pUI->isDown());
+      // Thrust
+      pDemo->ship->setThrustActive(pUI->isDown());
 
-   // Shoot
-   if (pUI->isSpace() && pDemo->ship.isAlive())
-      pDemo->ship.shoot(pDemo->orbitObjects);
+      // Shoot
+      if (pUI->isSpace() && pDemo->ship != nullptr)
+         pDemo->ship->shoot(pDemo->orbitObjects);
+   }
 
    // rotate the earth and moon
    pDemo->rotationEarth.update(TIME);
@@ -183,39 +207,29 @@ void callBack(const Interface* pUI, void* p)
    for (int i = 0; i < pDemo->orbitObjects.size(); i++)
    {
       auto obj1 = pDemo->orbitObjects[i];
-      for (int n = i + 1; n < pDemo->orbitObjects.size(); n++)
+      if (!obj1->getIsDestroyed())
       {
-         auto obj2 = pDemo->orbitObjects[n];
-         if (obj1->checkCollision(*obj2))
+         for (int n = i + 1; n < pDemo->orbitObjects.size(); n++)
          {
-            // TODO: Collision
-            // obj1 and obj2 need to break apart
-            // Add parts objects to pDemo->orbitObjects
-            cout << "Object Created repeatedly" << endl;
-            
-            pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + i);
-            obj1->breakApart(pDemo->orbitObjects);
-            obj1->setDead();
+            auto obj2 = pDemo->orbitObjects[n];
+            if (!obj2->getIsDestroyed() && obj1->checkCollision(*obj2))
+            {
+               destroyObject(pDemo, obj1, i);
+               destroyObject(pDemo, obj2, n - 1);
 
-            pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + n-1);
-            obj2->breakApart(pDemo->orbitObjects);
-            obj1->setDead();
+               // We *need* to stop iterating over the next elements because obj1 is now destroyed.
+               break;
+            }
+         }
 
+         // Does obj1 collide with earth
+         if (!obj1->getIsDestroyed() && obj1->checkCollision(Position(0, 0), 55))
+         {
+            // If it does.
+            destroyObject(pDemo, obj1, i);
          }
       }
-      // Does obj1 collide with earth
-      if (Position::getDistance(obj1->getPosition(), Position(0,0)) <= (obj1->getRadius() + 55) * obj1->getPosition().getZoom())
-      {
-         // If it does.
-         pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + i);
-         obj1->breakApart(pDemo->orbitObjects);
-         obj1->setDead();
-
-      }
-
    }
-
-
 
    // Update and draw all the stars
    for (const auto star : pDemo->stars)
@@ -225,6 +239,17 @@ void callBack(const Interface* pUI, void* p)
 
       // Draw it
       star->draw(gout);
+   }
+
+   // Delete destroyed objects (usually bullets).
+   for (int i = 0; i < pDemo->orbitObjects.size(); i++)
+   {
+      auto obj = pDemo->orbitObjects[i];
+      if (obj->getIsDestroyed())
+      {
+         destroyObject(pDemo, obj, i);
+         i--;        // Need to adjust index because we're modifying array in place.
+      }
    }
 
    // Update and draw all orbit objects

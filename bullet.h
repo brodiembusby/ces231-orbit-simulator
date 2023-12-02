@@ -13,12 +13,17 @@
 
 class Bullet : public OrbitObject
 {
+   int aliveTime;
+
 protected:
-   void accelerateCallback(Acceleration& acceleration) const { acceleration.setMeters(0, 0); }  // Disable gravity.
+   void updateCallback(Acceleration& acceleration) override;  // Disable gravity.
 
 public:
+   // Constants
+   const int LIFETIME = 70;   // How many frames the bullet is alive for.
+
    // Operations
    void draw(ogstream& gout) const override { gout.drawProjectile(position); }
    const double getRadius() const override { return 0.5; }
-   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override; // TODO
-}; 
+   void breakApart(std::vector<OrbitObject*>& _) const override {}
+};

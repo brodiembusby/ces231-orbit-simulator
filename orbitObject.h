@@ -18,13 +18,13 @@
 class OrbitObject
 {
 protected:
-   
+   bool isDestroyed;
    Position position;
    Velocity velocity;
    Rotation rotation;
-   virtual void accelerateCallback(Acceleration& acceleration) const {}
+   virtual void updateCallback(Acceleration& acceleration) {}
 public:
-   OrbitObject() : position(), velocity(), rotation() {}
+   OrbitObject() : position(), velocity(), rotation(), isDestroyed(false) {}
    OrbitObject(const Position& position, const Velocity& velocity) : OrbitObject()
    {
       this->position = position;
@@ -35,9 +35,10 @@ public:
    Position& getPosition() { return position; }
    Velocity& getVelocity() { return velocity; }
    Rotation& getRotation() { return rotation; }
-   virtual const double getRadius() const { return 0; }
-   virtual const void setDead() const { }
+   bool getIsDestroyed() { return isDestroyed; }
+   virtual const double getRadius() const = 0;
    const bool checkCollision(const OrbitObject& other) const;
+   const bool checkCollision(const Position& pos, const double radius) const;
 
    // Setters
    void setPosition(const Position& position) { this->position = position; }
