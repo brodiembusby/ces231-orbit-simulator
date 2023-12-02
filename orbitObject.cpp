@@ -10,6 +10,7 @@
 #include "orbitObject.h"
 #include "acceleration.h"
 #include "velocity.h"
+#include "fragment.h"
 
  /************************************************************************
  * UPDATE
@@ -40,4 +41,9 @@ void OrbitObject::update(const double time)
 const bool OrbitObject::checkCollision(const OrbitObject& other) const {
    const double distance = Position::getDistance(position, other.position);
    return distance <= (getRadius() + other.getRadius()) * position.getZoom();
+}
+
+void OrbitObject::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
+
+   
 }

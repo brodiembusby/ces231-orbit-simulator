@@ -22,28 +22,32 @@ void GPS::breakApart(std::vector<OrbitObject*>& orbitObjects) const  {
   
    Position leftPos(position);
    Position rightPos(position);
-   leftPos.addPixelsX(-4);
-   rightPos.addPixelsX(4);
+   leftPos.addPixelsX(-40);
+   rightPos.addPixelsX(40);
+   Velocity vel(velocity);
+   vel.addMetersX(1000);
+
 
    //GPS parts
    GPS* centerGPS = new GPS();
    centerGPS->setRotation(rotation.getAngle());
    centerGPS->getPosition();
-   centerGPS->setVelocity(Velocity(velocity));
+   centerGPS->setVelocity(vel);
 
    GPS* rightGPS = new GPS();
    rightGPS->setRotation(rotation.getAngle());
    rightGPS->setPosition(rightPos);
-   rightGPS->setVelocity(Velocity(velocity));
+   rightGPS->setVelocity(Velocity(vel));
 
    GPS* leftGPS = new GPS();
    leftGPS->setRotation(rotation.getAngle());
    leftGPS->setPosition(leftPos);
-   leftGPS->setVelocity(Velocity(velocity));
+   leftGPS->setVelocity(Velocity(vel));
 
    //Add to Vector
-   orbitObjects.push_back(centerGPS);
+
    orbitObjects.push_back(rightGPS);
    orbitObjects.push_back(leftGPS);
+   orbitObjects.push_back(centerGPS);
 
 }
