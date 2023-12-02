@@ -149,6 +149,7 @@
     <ClCompile Include="position.cpp" />
     <ClCompile Include="spaceship.cpp" />
     <ClCompile Include="sputnik.cpp" />
+    <ClCompile Include="star.cpp" />
     <ClCompile Include="starlink.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="testAcceleration.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="position.h" />
     <ClInclude Include="rotation.h" />
     <ClInclude Include="sputnik.h" />
+    <ClInclude Include="star.h" />
     <ClInclude Include="starlink.h" />
     <ClInclude Include="spaceship.h" />
     <ClInclude Include="test.h" />
