@@ -9,7 +9,7 @@
 
 #pragma once
 #include "starlink.h"
-
+#include "part.h"
 /************************************************************************
 * breakApart
 *    Takes
@@ -24,12 +24,12 @@ void Starlink::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    downPos.addPixelsY(-4);
 
    //Starlink parts
-   Starlink* upStarlink = new Starlink();
+   Part* upStarlink = new Part();
    upStarlink->setRotation(rotation.getAngle());
    upStarlink->getPosition();
    upStarlink->setVelocity(Velocity(velocity));
 
-   Starlink* downStarlink = new Starlink();
+   Part* downStarlink = new Part();
    downStarlink->setRotation(rotation.getAngle());
    downStarlink->setPosition(downPos);
    downStarlink->setVelocity(Velocity(velocity));

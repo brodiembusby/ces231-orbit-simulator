@@ -9,7 +9,7 @@
 
 #pragma once
 #include "dragon.h"
-
+#include "part.h"
 /************************************************************************
 * breakApart
 *    Takes
@@ -25,19 +25,19 @@ void Dragon::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    // Add Pixels to separate parts
    leftPos.addPixelsX(-4);
    rightPos.addPixelsX(4);
-
+   
    //CrewDragon parts
-   Dragon* CrewDragonCenter = new Dragon();
+   Part* CrewDragonCenter = new Part();
    CrewDragonCenter->setRotation(rotation.getAngle());
    CrewDragonCenter->getPosition();
    CrewDragonCenter->setVelocity(Velocity(velocity));
 
-   Dragon* CrewDragonLeft = new Dragon();
+   Part* CrewDragonLeft = new Part();
    CrewDragonLeft->setRotation(rotation.getAngle());
    CrewDragonLeft->setPosition(leftPos);
    CrewDragonLeft->setVelocity(Velocity(velocity));
 
-   Dragon* CrewDragonRight = new Dragon();
+   Part* CrewDragonRight = new Part();
    CrewDragonRight->setRotation(rotation.getAngle());
    CrewDragonRight->setPosition(rightPos);
    CrewDragonRight->setVelocity(Velocity(velocity));

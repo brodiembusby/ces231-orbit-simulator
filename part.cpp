@@ -1,7 +1,28 @@
-#include "Part.h"
-#include <vector>
+#include "part.h"
+#include "fragment.h"
+#pragma once
+void Part::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
-void Part::breakApart(std::vector<OrbitObject*>& orbitObjects, OrbitObject& obj) {
+   Position leftPos(position);
+   Position rightPos(position);
+   leftPos.addPixelsX(-40);
+   rightPos.addPixelsX(40);
+   Velocity vel(velocity);
+   vel.addMetersX(1000);
+   
+   Fragment* fragments[5];
+
+   for (int i = 0; i <= 6; i++) {
+      fragments[i] = new Fragment();
+      Position pos(position);
+      pos.addPixelsX(i);
+      pos.addPixelsY(i);
+      fragments[i]->setRotation(rotation.getAngle());
+      fragments[i]->getPosition();
+      fragments[i]->setVelocity(vel);
+      orbitObjects.push_back(fragments[i]);
+   }
+
 
 }
 

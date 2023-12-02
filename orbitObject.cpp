@@ -10,8 +10,7 @@
 #include "orbitObject.h"
 #include "acceleration.h"
 #include "velocity.h"
-#include "fragment.h"
-
+#pragma once
  /************************************************************************
  * UPDATE
  * Performs a physics tick and updates the object's components.

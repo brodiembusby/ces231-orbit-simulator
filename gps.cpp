@@ -7,11 +7,10 @@
  *    Derived class of OrbitObject. Methods that return GPS parts
  ************************************************************************/
 
-#pragma once
+
 #include "gps.h"
-
-
-
+#include "part.h"
+#pragma once
 /************************************************************************
 * breakApart
 *    Takes
@@ -27,23 +26,22 @@ void GPS::breakApart(std::vector<OrbitObject*>& orbitObjects) const  {
    Velocity vel(velocity);
    vel.addMetersX(1000);
 
-
    //GPS parts
-   GPS* centerGPS = new GPS();
+   Part* centerGPS = new Part();
    centerGPS->setRotation(rotation.getAngle());
    centerGPS->getPosition();
    centerGPS->setVelocity(vel);
 
-   GPS* rightGPS = new GPS();
+   Part* rightGPS = new Part();
    rightGPS->setRotation(rotation.getAngle());
    rightGPS->setPosition(rightPos);
    rightGPS->setVelocity(Velocity(vel));
 
-   GPS* leftGPS = new GPS();
+   
+   Part* leftGPS = new Part();
    leftGPS->setRotation(rotation.getAngle());
    leftGPS->setPosition(leftPos);
    leftGPS->setVelocity(Velocity(vel));
-
    //Add to Vector
 
    orbitObjects.push_back(rightGPS);
