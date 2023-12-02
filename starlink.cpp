@@ -22,19 +22,21 @@ void Starlink::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    Position downPos(position);
    Position upPos(position);
    // Add Pixels to separate parts
-   upPos.addPixelsY(4);
-   downPos.addPixelsY(-4);
+   upPos.addPixelsY(20);
+   downPos.addPixelsY(-20);
+   Velocity vel(velocity);
+   vel.addMetersX(1000);
 
    //Starlink parts
    StarlinkArray* upStarlink = new StarlinkArray();
    upStarlink->setRotation(rotation.getAngle());
    upStarlink->getPosition();
-   upStarlink->setVelocity(Velocity(velocity));
+   upStarlink->setVelocity(Velocity(vel));
 
    StarlinkBody* downStarlink = new StarlinkBody();
    downStarlink->setRotation(rotation.getAngle());
    downStarlink->setPosition(downPos);
-   downStarlink->setVelocity(Velocity(velocity));
+   downStarlink->setVelocity(Velocity(vel));
 
    //Add to Vector
    orbitObjects.push_back(upStarlink);

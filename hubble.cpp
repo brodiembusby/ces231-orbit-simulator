@@ -18,31 +18,33 @@ void Hubble::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    Position upPos(position);
    Position downPos(position);
    // Add Pixels to separate parts
-   leftPos.addPixelsX(-4);
-   rightPos.addPixelsX(4);
-   upPos.addPixelsX(-4);
-   downPos.addPixelsX(4);
+   leftPos.addPixelsX(-20);
+   rightPos.addPixelsX(20);
+   upPos.addPixelsY(-20);
+   downPos.addPixelsY(20);
+   Velocity vel(velocity);
+   vel.addMetersX(1000);
 
    //Hubble parts
    HubbleTelescope* TelscopeHubble = new HubbleTelescope();
    TelscopeHubble->setRotation(rotation.getAngle());
    TelscopeHubble->setPosition(upPos);
-   TelscopeHubble->setVelocity(Velocity(velocity));
+   TelscopeHubble->setVelocity(Velocity(vel));
 
    HubbleComputer* ComputerHubble = new HubbleComputer();
    ComputerHubble->setRotation(rotation.getAngle());
    ComputerHubble->setPosition(downPos);
-   ComputerHubble->setVelocity(Velocity(velocity));
+   ComputerHubble->setVelocity(Velocity(vel));
 
    HubbleLeft* leftHubble = new HubbleLeft();
    leftHubble->setRotation(rotation.getAngle());
    leftHubble->setPosition(leftPos);
-   leftHubble->setVelocity(Velocity(velocity));
+   leftHubble->setVelocity(Velocity(vel));
 
    HubbleRight* rightHubble = new HubbleRight();
    rightHubble->setRotation(rotation.getAngle());
    rightHubble->setPosition(rightPos);
-   rightHubble->setVelocity(Velocity(velocity));
+   rightHubble->setVelocity(Velocity(vel));
 
    //Add to Vector
    orbitObjects.push_back(rightHubble);

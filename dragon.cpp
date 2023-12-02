@@ -24,9 +24,11 @@ void Dragon::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    Position rightPos(position);
    Position centerPos(position);
    // Add Pixels to separate parts
-   leftPos.addPixelsX(-4);
-   rightPos.addPixelsX(4);
+   leftPos.addPixelsX(-10);
+   rightPos.addPixelsX(10);
    centerPos.addPixelsY(20);
+   Velocity vel(velocity);
+   vel.addMetersX(1000);
    
    //CrewDragon parts
    CrewDragonCenter* centerDragon = new CrewDragonCenter();
