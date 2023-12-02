@@ -36,6 +36,7 @@ public:
    Velocity& getVelocity() { return velocity; }
    Rotation& getRotation() { return rotation; }
    virtual const double getRadius() const { return 0; }
+   virtual const void setDead() const { }
    const bool checkCollision(const OrbitObject& other) const;
 
    // Setters

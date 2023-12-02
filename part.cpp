@@ -10,7 +10,7 @@ void Part::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    Velocity vel(velocity);
    vel.addMetersX(1000);
    
-   Fragment* fragments[5];
+   Fragment* fragments[7];
 
    for (int i = 0; i <= 6; i++) {
       fragments[i] = new Fragment();

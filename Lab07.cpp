@@ -170,7 +170,7 @@ void callBack(const Interface* pUI, void* p)
    pDemo->ship.setThrustActive(pUI->isDown());
 
    // Shoot
-   if (pUI->isSpace())
+   if (pUI->isSpace() && pDemo->ship.isAlive())
       pDemo->ship.shoot(pDemo->orbitObjects);
 
    // rotate the earth and moon
@@ -178,6 +178,7 @@ void callBack(const Interface* pUI, void* p)
    pDemo->rotationMoon.update(TIME);
    Position drawPoint;
    ogstream gout;
+
    // Collision detection
    for (int i = 0; i < pDemo->orbitObjects.size(); i++)
    {
@@ -190,12 +191,28 @@ void callBack(const Interface* pUI, void* p)
             // TODO: Collision
             // obj1 and obj2 need to break apart
             // Add parts objects to pDemo->orbitObjects
-            cout << "something happened";
+            cout << "something happened" << endl;
+            
             pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + i);
             obj1->breakApart(pDemo->orbitObjects);
+            obj1->setDead();
+
+            pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + n-1);
+            obj2->breakApart(pDemo->orbitObjects);
+            obj1->setDead();
 
          }
       }
+      // Does obj1 collide with earth
+      if (Position::getDistance(obj1->getPosition(), Position(0,0)) <= (obj1->getRadius() + 55) * obj1->getPosition().getZoom())
+      {
+         // If it does.
+         pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + i);
+         obj1->breakApart(pDemo->orbitObjects);
+         obj1->setDead();
+
+      }
+
    }
 
 

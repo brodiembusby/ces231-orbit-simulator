@@ -14,5 +14,7 @@ class Dragon : public OrbitObject
 public:
    void draw(ogstream& gout) const override { gout.drawCrewDragon(position, rotation.getAngle()); }
    void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
+   const double getRadius() const override { return 7; }
+
 };
 

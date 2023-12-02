@@ -19,6 +19,7 @@ class Spaceship : public OrbitObject
 {
 private:
    bool isThrusting;
+   bool Alive = true;
 
 protected:
    void accelerateCallback(Acceleration& acceleration) const override;
@@ -39,5 +40,7 @@ public:
    void rotateLeft() { rotation.addAngle(-ROTATION_SPEED); }
    void rotateRight() { rotation.addAngle(ROTATION_SPEED); }
    void shoot(std::vector<OrbitObject*>& orbitObjects) const;
+   bool isAlive() { return Alive; }
+   void setDead() { Alive = false; }
 };
 

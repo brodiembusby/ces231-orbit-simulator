@@ -37,7 +37,8 @@ void OrbitObject::update(const double time)
 * Checks if this object is colliding with another.
 *    OrbitObject  other          The other object.
 ************************************************************************/
-const bool OrbitObject::checkCollision(const OrbitObject& other) const {
+const bool OrbitObject::checkCollision(const OrbitObject& other) const 
+{
    const double distance = Position::getDistance(position, other.position);
    return distance <= (getRadius() + other.getRadius()) * position.getZoom();
 }

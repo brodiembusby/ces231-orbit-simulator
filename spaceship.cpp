@@ -47,4 +47,5 @@ void Spaceship::shoot(std::vector<OrbitObject*>& orbitObjects) const {
 
 void Spaceship::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    //TODO
+   
 }
