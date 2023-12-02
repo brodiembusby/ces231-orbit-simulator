@@ -39,5 +39,5 @@ void OrbitObject::update(const double time)
 ************************************************************************/
 const bool OrbitObject::checkCollision(const OrbitObject& other) const {
    const double distance = Position::getDistance(position, other.position);
-   return distance <= getRadius() + other.getRadius();
+   return distance <= (getRadius() + other.getRadius()) * position.getZoom();
 }
