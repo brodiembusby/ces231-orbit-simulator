@@ -18,20 +18,32 @@
 *    INPUT      gout   graphical output
 *               gps gps object
 ************************************************************************/
-void GPS::breakApart(ogstream& gout, GPS& gps) {
-
-   // I dont know what rotation does but it does some wild things
-   double rotation = 10;
-   // Instatiate new positions for each part
-   Position initPosition(gps.getPosition());
-   Position leftPos(gps.getPosition());
-   Position rightPos(gps.getPosition());
-   // Add four pixels so they don't collide
+void GPS::breakApart(std::vector<OrbitObject*>& orbitObjects) const  {
+  
+   Position leftPos(position);
+   Position rightPos(position);
    leftPos.addPixelsX(-4);
    rightPos.addPixelsX(4);
-   // draw each gps part
-   gout.drawGPSCenter(initPosition, rotation);
-   gout.drawGPSLeft(initPosition, rotation, leftPos);
-   gout.drawGPSRight(initPosition, rotation, rightPos);
+
+   //GPS parts
+   GPS* centerGPS = new GPS();
+   centerGPS->setRotation(rotation.getAngle());
+   centerGPS->getPosition();
+   centerGPS->setVelocity(Velocity(velocity));
+
+   GPS* rightGPS = new GPS();
+   rightGPS->setRotation(rotation.getAngle());
+   rightGPS->setPosition(rightPos);
+   rightGPS->setVelocity(Velocity(velocity));
+
+   GPS* leftGPS = new GPS();
+   leftGPS->setRotation(rotation.getAngle());
+   leftGPS->setPosition(leftPos);
+   leftGPS->setVelocity(Velocity(velocity));
+
+   //Add to Vector
+   orbitObjects.push_back(centerGPS);
+   orbitObjects.push_back(rightGPS);
+   orbitObjects.push_back(leftGPS);
 
 }

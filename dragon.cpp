@@ -10,28 +10,41 @@
 #pragma once
 #include "dragon.h"
 
-
-
 /************************************************************************
 * breakApart
 *    Takes
 *    INPUT      gout   graphical output 
 *               dragon dragon object       
 ************************************************************************/
-void Dragon::breakApart(ogstream& gout, Dragon& dragon) {
-   
-   // I dont know what rotation does but it does some wild things
-   double rotation = 10;
-   // Instatiate new positions for each part
-   Position initPosition(dragon.getPosition());
-   Position leftPos(dragon.getPosition());
-   Position rightPos(dragon.getPosition());
-   // Add four pixels so they don't collide
+void Dragon::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
+
+
+   //Instatiate Pixels
+   Position leftPos(position);
+   Position rightPos(position);
+   // Add Pixels to separate parts
    leftPos.addPixelsX(-4);
    rightPos.addPixelsX(4);
-   // draw each dragon part
-   gout.drawCrewDragonCenter(initPosition, rotation);
-   gout.drawCrewDragonLeft(initPosition, rotation, leftPos);
-   gout.drawCrewDragonRight(initPosition, rotation, rightPos);
+
+   //CrewDragon parts
+   Dragon* CrewDragonCenter = new Dragon();
+   CrewDragonCenter->setRotation(rotation.getAngle());
+   CrewDragonCenter->getPosition();
+   CrewDragonCenter->setVelocity(Velocity(velocity));
+
+   Dragon* CrewDragonLeft = new Dragon();
+   CrewDragonLeft->setRotation(rotation.getAngle());
+   CrewDragonLeft->setPosition(leftPos);
+   CrewDragonLeft->setVelocity(Velocity(velocity));
+
+   Dragon* CrewDragonRight = new Dragon();
+   CrewDragonRight->setRotation(rotation.getAngle());
+   CrewDragonRight->setPosition(rightPos);
+   CrewDragonRight->setVelocity(Velocity(velocity));
+
+   //Add to Vector
+   orbitObjects.push_back(CrewDragonRight);
+   orbitObjects.push_back(CrewDragonLeft);
+   orbitObjects.push_back(CrewDragonCenter);
 
 }

@@ -35,6 +35,7 @@ public:
 
    // Operations
    void draw(ogstream& gout) const override { gout.drawShip(position, rotation.getAngle(), isThrusting); }
+   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override; //TODO
    void rotateLeft() { rotation.addAngle(-ROTATION_SPEED); }
    void rotateRight() { rotation.addAngle(ROTATION_SPEED); }
    void shoot(std::vector<OrbitObject*>& orbitObjects) const;

@@ -8,11 +8,11 @@
  ************************************************************************/
 #pragma once
 #include "orbitObject.h"
-class Sputnik :
-    public OrbitObject
+class Sputnik : public OrbitObject
 {
 
 public:
    void draw(ogstream& gout) const override { gout.drawSputnik(position, rotation.getAngle()); }
+   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
 };
 

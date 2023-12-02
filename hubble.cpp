@@ -9,34 +9,43 @@
 
 #pragma once
 #include "hubble.h"
+void Hubble::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
-
-
-/************************************************************************
-* breakApart
-*    Takes
-*    INPUT      gout   graphical output
-*               hubble Hubble object
-************************************************************************/
-void Hubble::breakApart(ogstream& gout, Hubble& hubble) {
-
-   // I dont know what rotation does but it does some wild things
-   double rotation = 10;
-   // Instatiate new positions for each part
-   Position initPosition(hubble.getPosition());
-   Position leftPos(hubble.getPosition());
-   Position rightPos(hubble.getPosition());
-   Position computerPos(hubble.getPosition());
-   Position telescopePos(hubble.getPosition());
-   // Add four pixels so they don't collide
+   //Instatiate Pixels
+   Position leftPos(position);
+   Position rightPos(position);
+   // Add Pixels to separate parts
    leftPos.addPixelsX(-4);
    rightPos.addPixelsX(4);
-   computerPos.addPixelsY(4);
-   telescopePos.addPixelsY(-4);
-   // draw each hubble part
-   gout.drawHubbleTelescope(initPosition, rotation, telescopePos);
-   gout.drawHubbleComputer(initPosition, rotation, computerPos);
-   gout.drawHubbleLeft(initPosition, rotation, leftPos);
-   gout.drawHubbleRight(initPosition, rotation, rightPos);
+
+
+   //Hubble parts
+   Hubble* HubbleTelescope = new Hubble();
+   HubbleTelescope->setRotation(rotation.getAngle());
+   HubbleTelescope->getPosition();
+   HubbleTelescope->setVelocity(Velocity(velocity));
+
+   Hubble* HubbleComputer = new Hubble();
+   HubbleComputer->setRotation(rotation.getAngle());
+   HubbleComputer->setPosition(rightPos);
+   HubbleComputer->setVelocity(Velocity(velocity));
+
+   Hubble* HubbleLeft = new Hubble();
+   HubbleLeft->setRotation(rotation.getAngle());
+   HubbleLeft->setPosition(leftPos);
+   HubbleLeft->setVelocity(Velocity(velocity));
+
+   Hubble* HubbleRight = new Hubble();
+   HubbleRight->setRotation(rotation.getAngle());
+   HubbleRight->setPosition(leftPos);
+   HubbleRight->setVelocity(Velocity(velocity));
+
+   //Add to Vector
+   orbitObjects.push_back(HubbleRight);
+   orbitObjects.push_back(HubbleLeft);
+   orbitObjects.push_back(HubbleComputer);
+   orbitObjects.push_back(HubbleTelescope);
+
+
 
 }

@@ -176,7 +176,8 @@ void callBack(const Interface* pUI, void* p)
    // rotate the earth and moon
    pDemo->rotationEarth.update(TIME);
    pDemo->rotationMoon.update(TIME);
-
+   Position drawPoint;
+   ogstream gout;
    // Collision detection
    for (int i = 0; i < pDemo->orbitObjects.size(); i++)
    {
@@ -193,8 +194,7 @@ void callBack(const Interface* pUI, void* p)
       }
    }
 
-   Position drawPoint;
-   ogstream gout;
+
 
    // Update and draw all the stars
    for (const auto star : pDemo->stars)

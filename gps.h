@@ -16,7 +16,8 @@ class GPS : public OrbitObject
 {
 public:
    void draw(ogstream& gout) const override { gout.drawGPS(position, rotation.getAngle()); }
-   void breakApart(ogstream& gout, GPS& gps);
+   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
    const double getRadius() const override { return 12; }
+
 };
 

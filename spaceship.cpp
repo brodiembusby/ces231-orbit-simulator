@@ -44,3 +44,7 @@ void Spaceship::shoot(std::vector<OrbitObject*>& orbitObjects) const {
    
    orbitObjects.push_back(bullet);
 }
+
+void Spaceship::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
+   //TODO
+}

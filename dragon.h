@@ -9,11 +9,10 @@
 
 #pragma once
 #include "orbitObject.h"
-class Dragon :
-    public OrbitObject
+class Dragon : public OrbitObject
 {
 public:
    void draw(ogstream& gout) const override { gout.drawCrewDragon(position, rotation.getAngle()); }
-   void breakApart(ogstream& gout, Dragon& dragon);
+   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
 };
 

@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
     <ClCompile Include="dragon.cpp" />
+    <ClCompile Include="fragment.cpp" />
     <ClCompile Include="gps.cpp" />
     <ClCompile Include="hubble.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="orbitObject.cpp" />
+    <ClCompile Include="part.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="spaceship.cpp" />
     <ClCompile Include="sputnik.cpp" />
@@ -165,9 +167,11 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="dragon.h" />
+    <ClInclude Include="fragment.h" />
     <ClInclude Include="gps.h" />
     <ClInclude Include="hubble.h" />
     <ClInclude Include="orbitObject.h" />
+    <ClInclude Include="part.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="rotation.h" />
     <ClInclude Include="sputnik.h" />

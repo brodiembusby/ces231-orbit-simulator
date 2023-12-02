@@ -20,4 +20,5 @@ public:
    // Operations
    void draw(ogstream& gout) const override { gout.drawProjectile(position); }
    const double getRadius() const override { return 0.5; }
-};
+   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override; // TODO
+}; 
