@@ -19,32 +19,34 @@
 void Dragon::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
 
-   //Instatiate Pixels
+   // Add Pixels to separate parts
    Position leftPos(position);
    Position rightPos(position);
+   Position centerPos(position);
    // Add Pixels to separate parts
    leftPos.addPixelsX(-4);
    rightPos.addPixelsX(4);
+   centerPos.addPixelsY(20);
    
    //CrewDragon parts
-   Part* CrewDragonCenter = new Part();
-   CrewDragonCenter->setRotation(rotation.getAngle());
-   CrewDragonCenter->getPosition();
-   CrewDragonCenter->setVelocity(Velocity(velocity));
+   CrewDragonCenter* centerDragon = new CrewDragonCenter();
+   centerDragon->setRotation(rotation.getAngle());
+   centerDragon->setPosition(centerPos);
+   centerDragon->setVelocity(Velocity(velocity));
 
-   Part* CrewDragonLeft = new Part();
-   CrewDragonLeft->setRotation(rotation.getAngle());
-   CrewDragonLeft->setPosition(leftPos);
-   CrewDragonLeft->setVelocity(Velocity(velocity));
+   CrewDragonLeft* leftDragon = new CrewDragonLeft();
+   leftDragon->setRotation(rotation.getAngle());
+   leftDragon->setPosition(leftPos);
+   leftDragon->setVelocity(Velocity(velocity));
 
-   Part* CrewDragonRight = new Part();
-   CrewDragonRight->setRotation(rotation.getAngle());
-   CrewDragonRight->setPosition(rightPos);
-   CrewDragonRight->setVelocity(Velocity(velocity));
+   CrewDragonRight* DragonRight = new CrewDragonRight();
+   DragonRight->setRotation(rotation.getAngle());
+   DragonRight->setPosition(rightPos);
+   DragonRight->setVelocity(Velocity(velocity));
 
    //Add to Vector
-   orbitObjects.push_back(CrewDragonRight);
-   orbitObjects.push_back(CrewDragonLeft);
-   orbitObjects.push_back(CrewDragonCenter);
+   orbitObjects.push_back(centerDragon);
+   orbitObjects.push_back(leftDragon);
+   orbitObjects.push_back(DragonRight);
 
 }

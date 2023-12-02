@@ -9,42 +9,46 @@
 
 #pragma once
 #include "hubble.h"
+#include "part.h"
 void Hubble::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
-   //Instatiate Pixels
+   //Instatiate Positions
    Position leftPos(position);
    Position rightPos(position);
+   Position upPos(position);
+   Position downPos(position);
    // Add Pixels to separate parts
    leftPos.addPixelsX(-4);
    rightPos.addPixelsX(4);
-
+   upPos.addPixelsX(-4);
+   downPos.addPixelsX(4);
 
    //Hubble parts
-   Hubble* HubbleTelescope = new Hubble();
-   HubbleTelescope->setRotation(rotation.getAngle());
-   HubbleTelescope->getPosition();
-   HubbleTelescope->setVelocity(Velocity(velocity));
+   HubbleTelescope* TelscopeHubble = new HubbleTelescope();
+   TelscopeHubble->setRotation(rotation.getAngle());
+   TelscopeHubble->setPosition(upPos);
+   TelscopeHubble->setVelocity(Velocity(velocity));
 
-   Hubble* HubbleComputer = new Hubble();
-   HubbleComputer->setRotation(rotation.getAngle());
-   HubbleComputer->setPosition(rightPos);
-   HubbleComputer->setVelocity(Velocity(velocity));
+   HubbleComputer* ComputerHubble = new HubbleComputer();
+   ComputerHubble->setRotation(rotation.getAngle());
+   ComputerHubble->setPosition(downPos);
+   ComputerHubble->setVelocity(Velocity(velocity));
 
-   Hubble* HubbleLeft = new Hubble();
-   HubbleLeft->setRotation(rotation.getAngle());
-   HubbleLeft->setPosition(leftPos);
-   HubbleLeft->setVelocity(Velocity(velocity));
+   HubbleLeft* leftHubble = new HubbleLeft();
+   leftHubble->setRotation(rotation.getAngle());
+   leftHubble->setPosition(leftPos);
+   leftHubble->setVelocity(Velocity(velocity));
 
-   Hubble* HubbleRight = new Hubble();
-   HubbleRight->setRotation(rotation.getAngle());
-   HubbleRight->setPosition(leftPos);
-   HubbleRight->setVelocity(Velocity(velocity));
+   HubbleRight* rightHubble = new HubbleRight();
+   rightHubble->setRotation(rotation.getAngle());
+   rightHubble->setPosition(rightPos);
+   rightHubble->setVelocity(Velocity(velocity));
 
    //Add to Vector
-   orbitObjects.push_back(HubbleRight);
-   orbitObjects.push_back(HubbleLeft);
-   orbitObjects.push_back(HubbleComputer);
-   orbitObjects.push_back(HubbleTelescope);
+   orbitObjects.push_back(rightHubble);
+   orbitObjects.push_back(leftHubble);
+   orbitObjects.push_back(ComputerHubble);
+   orbitObjects.push_back(TelscopeHubble);
 
 
 
