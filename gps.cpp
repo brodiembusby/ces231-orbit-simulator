@@ -28,7 +28,7 @@ void GPS::breakApart(std::vector<OrbitObject*>& orbitObjects) const  {
    rightPos.addPixelsX(20);
    centerPos.addPixelsY(20);
    Velocity vel(velocity);
-   vel.addMetersX(1000);
+   vel.addMetersX(2000);
 
    //GPS parts
    GPSCenter* centerGPS = new GPSCenter();

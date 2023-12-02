@@ -16,7 +16,7 @@ class Part : public OrbitObject
 public:
    
    void draw(ogstream& gout) const override {  };
-   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
+   virtual void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
 
 };
 
