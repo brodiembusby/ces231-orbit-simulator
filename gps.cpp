@@ -23,6 +23,7 @@ void GPS::breakApart(std::vector<OrbitObject*>& orbitObjects) const  {
    Position leftPos(position);
    Position rightPos(position);
    Position centerPos(position);
+
    // Add Pixels to separate parts
    leftPos.addPixelsX(-20);
    rightPos.addPixelsX(20);

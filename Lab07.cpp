@@ -43,6 +43,7 @@ public:
       rotationMoon(0, MOON_SPEED),
       ship()
    {
+     
       /**********************************************************
       * GPS objects
          Position	                              Velocity
@@ -160,8 +161,8 @@ void destroyObject(Demo* pDemo, OrbitObject* obj, const int index) {
       assert(false);          // Not sure what to do when main ship crashes.
    }
 
-   pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + index);
    obj->breakApart(pDemo->orbitObjects);
+   pDemo->orbitObjects.erase(pDemo->orbitObjects.begin() + index);
    delete obj;
 }
 

@@ -1,15 +1,24 @@
 #pragma once
 #include "orbitObject.h"
+#include "acceleration.h"
+#include "uiDraw.h"     // for RANDOM and DRAW*
+#include <vector>
+
 class Fragment : public OrbitObject
 {
 private:
-   double radius;
+   int aliveTime;
+   int deadTime;
+
+protected:
+   void updateCallback(Acceleration& acceleration) override;  // Alive countdown.
 
 public:
-   Fragment(double radius) : radius(radius){}
+   Fragment() : aliveTime(0), deadTime(0), OrbitObject() {
+      deadTime = (int)getRandomDouble(50, 100);
+   }
 
-   const double getRadius() const override { return radius; }
+   const double getRadius() const override { return 2; }
    void draw(ogstream& gout) const override { gout.drawFragment(position, rotation.getAngle()); }
-   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override; 
 };
 

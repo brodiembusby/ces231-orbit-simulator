@@ -15,6 +15,9 @@
 #include "rotation.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include <vector>
+
+class Fragment;
+
 class OrbitObject
 {
 protected:
@@ -39,6 +42,7 @@ public:
    virtual const double getRadius() const = 0;
    const bool checkCollision(const OrbitObject& other) const;
    const bool checkCollision(const Position& pos, const double radius) const;
+   static double getRandomDouble(double min, double max);
 
    // Setters
    void setPosition(const Position& position) { this->position = position; }
@@ -47,9 +51,10 @@ public:
 
    // Operations
    void update(const double time);
+   Fragment* createFragment(const double angle) const;
 
    // Abstract
    virtual void draw(ogstream& gout) const = 0;
-   virtual void breakApart(std::vector<OrbitObject*>& orbitObjects) const = 0;
+   virtual void breakApart(std::vector<OrbitObject*>& orbitObjects) const {};
 };
 

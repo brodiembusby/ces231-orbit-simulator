@@ -13,6 +13,7 @@
 
 class Bullet : public OrbitObject
 {
+private:
    int aliveTime;
 
 protected:
