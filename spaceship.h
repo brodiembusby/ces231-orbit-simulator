@@ -42,5 +42,6 @@ public:
    void rotateLeft() { rotation.addAngle(-ROTATION_SPEED); }
    void rotateRight() { rotation.addAngle(ROTATION_SPEED); }
    void shoot(std::vector<OrbitObject*>& orbitObjects) const;
+   void update(const double time) override;
 };
 

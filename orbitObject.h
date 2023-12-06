@@ -50,7 +50,7 @@ public:
    void setRotation(const Rotation& rotation) { this->rotation = rotation; }
 
    // Operations
-   void update(const double time);
+   virtual void update(const double time);
    Fragment* createFragment(const double angle) const;
 
    // Abstract

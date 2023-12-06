@@ -40,6 +40,24 @@ void OrbitObject::update(const double time)
    // Update position
    const Position dP = velocity.getDeltaPosition(time);
    position += dP;
+   
+   // Has a random chance to make a satellite start rotating .001 faster 
+   // causing them to randomly go "out of control".
+   if (random(0, 4000) == random(0, 4000))
+   {
+      double speed = rotation.getSpeed();
+      rotation.setSpeed(speed += .001);
+   }
+
+   // If its already out of control, make it slowly go faster and faster.
+   if (rotation.getSpeed() > 0)
+   {
+      double speed = rotation.getSpeed();
+      rotation.setSpeed(speed += .00001);
+   }
+
+   // Update the rotation.
+   rotation.update(TIME);
 }
 
 
