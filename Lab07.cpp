@@ -158,7 +158,6 @@ void destroyObject(Demo* pDemo, OrbitObject* obj, const int index) {
    if (obj == pDemo->ship)
    {
       pDemo->ship = nullptr;
-      assert(false);          // Not sure what to do when main ship crashes.
    }
 
    obj->breakApart(pDemo->orbitObjects);

@@ -4,6 +4,7 @@
 #include "bullet.h"
 #include "velocity.h"
 #include <vector>
+#include "fragment.h"
 
 Position rotate(const Position& origin, double x, double y, double rotation);
 
@@ -48,5 +49,9 @@ void Spaceship::shoot(std::vector<OrbitObject*>& orbitObjects) const {
 
 void Spaceship::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
    //TODO
-   
+   double angle = 3 / 360;
+   for (int i = 0; i < 3; i++)
+   {
+      orbitObjects.push_back(createFragment(angle*i));
+   }
 }
