@@ -12,6 +12,10 @@
 #include "orbitObject.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 
+ /*******************************
+  * GPS
+  * A GPS satellite.
+  ********************************/
 class GPS : public OrbitObject
 {
 public:

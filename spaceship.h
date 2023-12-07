@@ -15,6 +15,10 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include <vector>
 
+ /*********************************************
+  * Spaceship
+  * The spaceship that the user controls.
+  *********************************************/
 class Spaceship : public OrbitObject
 {
 private:

@@ -11,6 +11,10 @@
 #include "orbitObject.h"
 #include <functional>
 
+ /*******************************
+  * PART
+  * Base class for a large part of a destroyed satellite.
+  ********************************/
 class Part : public OrbitObject
 {
 private:
@@ -22,7 +26,9 @@ public:
    virtual void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
 };
 
-//GPS Classes
+/*******************************
+ * GPS Parts
+ ******************************/
 class GPSRight : public Part
 {
 public:
@@ -30,6 +36,7 @@ public:
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawGPSRight(position, rotation.getAngle(), rightPos); }
    const double getRadius() const override { return 2; }
 };
+
 class GPSLeft : public Part
 {
 public:
@@ -37,6 +44,7 @@ public:
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawGPSLeft(position, rotation.getAngle(), leftPos); }
    const double getRadius() const override { return 2; }
 };
+
 class GPSCenter : public Part
 {
 public:
@@ -44,7 +52,10 @@ public:
    void draw(ogstream& gout) const override { Position upPos; upPos.addPixelsY(10);  gout.drawGPSCenter(position, rotation.getAngle()); }
    const double getRadius() const override { return 2; }
 };
-// Hubble Classes
+
+/*******************************
+ * Hubble Parts
+ ******************************/
 class HubbleRight : public Part
 {
 public:
@@ -52,6 +63,7 @@ public:
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawHubbleRight(position, rotation.getAngle(), rightPos); }
    const double getRadius() const override { return 2; }
 };
+
 class HubbleLeft : public Part
 {
 public:
@@ -59,6 +71,7 @@ public:
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawHubbleLeft(position, rotation.getAngle(), leftPos); }
    const double getRadius() const override { return 2; }
 };
+
 class HubbleComputer : public Part
 {
 public:
@@ -66,6 +79,7 @@ public:
    void draw(ogstream& gout) const override { Position upPos; upPos.addPixelsY(10);  gout.drawHubbleComputer(position, rotation.getAngle(), upPos); }
    const double getRadius() const override { return 2; }
 };
+
 class HubbleTelescope : public Part
 {
 public:
@@ -73,7 +87,10 @@ public:
    void draw(ogstream& gout) const override { Position downPos; downPos.addPixelsY(-10); gout.drawHubbleTelescope(position, rotation.getAngle(), downPos); }
    const double getRadius() const override { return 2; }
 };
-// Starlink Classes
+
+/*******************************
+ * Starlink Parts
+ ******************************/
 class StarlinkBody : public Part
 {
 public:
@@ -81,6 +98,7 @@ public:
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawStarlinkArray(position, rotation.getAngle(), rightPos); }
    const double getRadius() const override { return 2; }
 };
+
 class StarlinkArray : public Part
 {
 public:
@@ -88,7 +106,10 @@ public:
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawStarlinkBody(position, rotation.getAngle(), leftPos); }
    const double getRadius() const override { return 2; }
 };
-// CrewqDragon Classes
+
+/*******************************
+ * CrewDragon Parts
+ ******************************/
 class CrewDragonRight : public Part
 {
 public:
@@ -96,6 +117,7 @@ public:
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawCrewDragonRight(position, rotation.getAngle(), rightPos); }
    const double getRadius() const override { return 2; }
 };
+
 class CrewDragonLeft : public Part
 {
 public:
@@ -103,6 +125,7 @@ public:
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawCrewDragonLeft(position, rotation.getAngle(), leftPos); }
    const double getRadius() const override { return 2; }
 };
+
 class CrewDragonCenter : public Part
 {
 public:

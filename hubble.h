@@ -7,7 +7,13 @@
  *    header file for Hubble
  ************************************************************************/
 #pragma once
+
 #include "orbitObject.h"
+
+ /*******************************
+  * HUBBLE
+  * The Hubble (telescope) satellite.
+  ********************************/
 class Hubble : public OrbitObject
 {
 
@@ -20,6 +26,4 @@ public:
 
    // Returns the radius of the hubble.
    const double getRadius() const override { return 10; }
-
 };
-

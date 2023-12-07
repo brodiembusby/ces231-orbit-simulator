@@ -18,6 +18,10 @@
 
 class Fragment;
 
+/*******************************
+ * OrbitObject
+ * Base class for any object that orbits the Earths. Implements gravity and inertia.
+ ********************************/
 class OrbitObject
 {
 protected:
