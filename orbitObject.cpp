@@ -2,7 +2,7 @@
  * Source File:
  *    OrbitObject : Any object that orbits the Earth.
  * Author:
- *    Aaron Fox.
+ *    Aaron Fox, Cameron Lybbert
  * Summary:
  *    Base class for supporting orbiting objects.
  ************************************************************************/
