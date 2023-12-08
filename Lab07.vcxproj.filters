@@ -78,6 +78,9 @@
     <ClCompile Include="part.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="satellite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -150,6 +153,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="part.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="satellite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

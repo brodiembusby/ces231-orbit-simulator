@@ -8,8 +8,8 @@
  ************************************************************************/
 
 #pragma once
-#include "orbitObject.h"
-class Dragon : public OrbitObject
+#include "satellite.h"
+class Dragon : public Satellite
 {
 public:
    void draw(ogstream& gout) const override { gout.drawCrewDragon(position, rotation.getAngle()); }

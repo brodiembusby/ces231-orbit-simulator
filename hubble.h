@@ -8,13 +8,13 @@
  ************************************************************************/
 #pragma once
 
-#include "orbitObject.h"
+#include "satellite.h"
 
  /*******************************
   * HUBBLE
   * The Hubble (telescope) satellite.
   ********************************/
-class Hubble : public OrbitObject
+class Hubble : public Satellite
 {
 
 public:

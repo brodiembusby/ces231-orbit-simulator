@@ -149,6 +149,7 @@
     <ClCompile Include="orbitObject.cpp" />
     <ClCompile Include="part.cpp" />
     <ClCompile Include="position.cpp" />
+    <ClCompile Include="satellite.cpp" />
     <ClCompile Include="spaceship.cpp" />
     <ClCompile Include="sputnik.cpp" />
     <ClCompile Include="starlink.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="part.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="rotation.h" />
+    <ClInclude Include="satellite.h" />
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="star.h" />
     <ClInclude Include="starlink.h" />

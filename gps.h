@@ -9,14 +9,14 @@
 
 #pragma once
 
-#include "orbitObject.h"
+#include "satellite.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 
  /*******************************
   * GPS
   * A GPS satellite.
   ********************************/
-class GPS : public OrbitObject
+class GPS : public Satellite
 {
 public:
    void draw(ogstream& gout) const override { gout.drawGPS(position, rotation.getAngle()); }

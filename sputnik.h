@@ -7,8 +7,8 @@
  *    header file for Sputnik
  ************************************************************************/
 #pragma once
-#include "orbitObject.h"
-class Sputnik : public OrbitObject
+#include "satellite.h"
+class Sputnik : public Satellite
 {
 
 public:

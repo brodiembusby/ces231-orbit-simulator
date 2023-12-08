@@ -8,8 +8,8 @@
  ************************************************************************/
 
 #pragma once
-#include "orbitObject.h"
-class Starlink : public OrbitObject
+#include "satellite.h"
+class Starlink : public Satellite
 {
 public:
    // Draws the satellite.
