@@ -1,15 +1,12 @@
-/*************************************************************
- * 1. Name:
- *      Demo
- * 2. Assignment Name:
- *      Lab 07: Orbit Simulator
- * 3. Assignment Description:
- *      Simulate satellites orbiting the earth
- * 4. What was the hardest part? Be as specific as possible.
- *      ??
- * 5. How long did it take for you to complete the assignment?
- *      ??
- *****************************************************************/
+/***********************************************************************
+ * Source File:
+ *    Lab07 : File holding main,callback, and Demo class
+ * Author:
+ *    Aaron Fox, Cameron Lybbert, Brodie Busby
+ * Summary:
+ *    Main file that instatiates all parameters/objects for the orbit simulator.
+ * .  Direct a spaceship to remove failing satallites. 
+ ************************************************************************/
 
 #include <cassert>      // for ASSERT
 #include "uiInteract.h" // for INTERFACE

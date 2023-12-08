@@ -1,6 +1,6 @@
 /***********************************************************************
  * Source File:
- *    starlink : Methods related to starlink satellite
+ *    Sputnik : Methods related to Sputnik satellite
  * Author:
  *    Brodie Busby
  * Summary:
@@ -11,8 +11,6 @@
 
 #include "sputnik.h"
 #include "fragment.h"
-#include <cmath> // Include cmath for trigonometric functions
-#include <cstdlib> // Include for random number generation
 
  /************************************************************************
  * BREAK APART

@@ -1,5 +1,5 @@
 /***********************************************************************
- * Source File:
+ * Header File:
  *    Bullet : Projectile fired from the spaceship.
  * Author:
  *    Aaron Fox

@@ -1,5 +1,5 @@
 /***********************************************************************
- * Source File:
+ * Header File:
  *    Spaceship : The spaceship that the user controls.
  * Author:
  *    Aaron Fox

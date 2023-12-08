@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Source File:
+ *    Satellite : An object in space
+ * Author:
+ *    Cameron Lybbert
+ * Summary:
+ *    Methods relating to satellite
+ ************************************************************************/
 #include "satellite.h"
 
 

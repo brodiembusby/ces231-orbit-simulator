@@ -1,5 +1,5 @@
 /************************************
-* Source File:
+* Header File:
 *     Star.h
 * Authors:
 *     Cameron Lybbert

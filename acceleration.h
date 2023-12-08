@@ -1,5 +1,5 @@
 /***********************************************************************
- * Source File:
+ * Header File:
  *    Velocity : Velocity based on acceleration and time
  * Author:
  *    Aaron Fox, Brodie Busby

@@ -12,8 +12,9 @@
 class Dragon : public Satellite
 {
 public:
-   void draw(ogstream& gout) const override { gout.drawCrewDragon(position, rotation.getAngle()); }
-   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;
+   
+   void draw(ogstream& gout) const override { gout.drawCrewDragon(position, rotation.getAngle()); } // calls specific draw function
+   void breakApart(std::vector<OrbitObject*>& orbitObjects) const override;   // adds dragon part objects
    const double getRadius() const override { return 7; }
 
 };

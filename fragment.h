@@ -1,5 +1,5 @@
 /***********************************************************************
- * Source File:
+ * Header File:
  *    Fragment : Fragment piece broken off satellite.
  * Author:
  *    Aaron Fox

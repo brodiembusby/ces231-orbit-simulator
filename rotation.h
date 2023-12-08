@@ -1,11 +1,11 @@
-/*************************************************************
- * 1. Name:
- *      Cameron Lybbert
- * 2. Assignment Name:
- *      Lab 07: Orbit Simulator
- * 3. File Description:
- *      Helps simulate the rotation of objects.
- *****************************************************************/
+ /***********************************************************************
+  * Header File:
+  *    Rotation : Rotation for objects
+  * Author:
+  *     Cameron Lybbert
+  * Summary:
+  *     Helps simulate the rotation of objects.
+  ************************************************************************/
 #pragma once
 
 #include "constants.h"

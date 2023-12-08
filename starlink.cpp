@@ -1,6 +1,6 @@
 /***********************************************************************
  * Source File:
- *    starlink : Methods related to starlink satellite
+ *    Starlink : Methods related to starlink satellite
  * Author:
  *    Brodie Busby
  * Summary:

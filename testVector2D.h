@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Test Vector2D : Test the Vector2D class
+ * Author:
+ *   Aaron Fox
+ * Summary:
+ *    All the unit tests for Vector2D
+ ************************************************************************/
 #pragma once
 class TestVector2D
 {

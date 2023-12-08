@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Test Acceleration : Test the Acceleration class
+ * Author:
+ *    Brodie Busby
+ * Summary:
+ *    All the unit tests for Acceleration
+ ************************************************************************/
 #pragma once
 
 class TestAcceleration

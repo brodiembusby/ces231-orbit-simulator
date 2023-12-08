@@ -1,6 +1,6 @@
 /***********************************************************************
- * Source File:
- *    satellite.h
+ * Header File:
+ *    Satellite : Satellite for objects
  * Author:
  *    Cameron Lybbert
  * Summary:
@@ -15,6 +15,6 @@ class Satellite :
 
 public:
 
-   void update(const double time) override;
+   void update(const double time) override;  // updates rotation on object
 };
 
