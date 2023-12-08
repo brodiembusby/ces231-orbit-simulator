@@ -1,3 +1,14 @@
+/***********************************************************************
+ * Source File:
+ *    Spaceship : The spaceship that the user controls.
+ * Author:
+ *    Aaron Fox, Cameron Lybbert, Brodie Busby
+ * Summary:
+ *    All functions for the spaceship to work.
+ ************************************************************************/
+
+#pragma once
+
 #include "spaceship.h"
 #include "acceleration.h"
 #include "vector2D.h"
@@ -47,8 +58,14 @@ void Spaceship::shoot(std::vector<OrbitObject*>& orbitObjects) const {
    orbitObjects.push_back(bullet);
 }
 
+/************************************************************************
+* BREAK APART
+* Called when the spaceship collides with something. Shouldn't the game end?
+*    INPUT  orbitObjects      List of all active orbit objects in the same during this frame.
+*                             Passed by reference to allow modification.
+************************************************************************/
 void Spaceship::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
-   //TODO
+   // TODO
    double angle = 3 / 360;
    for (int i = 0; i < 3; i++)
    {

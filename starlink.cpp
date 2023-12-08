@@ -8,14 +8,16 @@
  ************************************************************************/
 
 #pragma once
+
 #include "starlink.h"
 #include "part.h"
-/************************************************************************
-* breakApart
-*    Takes
-*    INPUT      gout:   graphical output
-*               starlink: Starlink object
-************************************************************************/
+
+ /************************************************************************
+ * BREAK APART
+ * Called when the satellite collides with something.
+ *    INPUT  orbitObjects      List of all active orbit objects in the same during this frame.
+ *                             Passed by reference to allow modification.
+ ************************************************************************/
 void Starlink::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
    //Instatiate Parts

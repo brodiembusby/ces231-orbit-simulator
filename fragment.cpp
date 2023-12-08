@@ -1,7 +1,15 @@
-#include "fragment.h"
+/***********************************************************************
+ * Source File:
+ *    Fragment : Small fragment created from destroyed satellite.
+ * Author:
+ *    Aaron Fox
+ * Summary:
+ *    Functions that make a fragment work.
+ ************************************************************************/
 
 #pragma once
 
+#include "fragment.h"
 
 /************************************************************************
 * UPDATE CALLBACK
