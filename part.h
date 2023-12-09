@@ -96,7 +96,7 @@ class StarlinkBody : public Part
 {
 public:
    StarlinkBody() : Part(3) {}
-   void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawStarlinkArray(position, rotation.getAngle(), rightPos); }
+   void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawStarlinkBody(position, rotation.getAngle(), rightPos); }
    const double getRadius() const override { return 2; }
 };
 
@@ -104,7 +104,7 @@ class StarlinkArray : public Part
 {
 public:
    StarlinkArray() : Part(3) {}
-   void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawStarlinkBody(position, rotation.getAngle(), leftPos); }
+   void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawStarlinkArray(position, rotation.getAngle(), leftPos); }
    const double getRadius() const override { return 4; }
 };
 
