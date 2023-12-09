@@ -6,11 +6,16 @@
  * Summary:
  *    Derived class of Vector2D. contains assets to compute velocity in space
  ************************************************************************/
+
 #pragma once
 
 #include "vector2D.h"
 #include "position.h"
 
+ /*********************************************
+  * Acceleration
+  * An acceleration in meters/second^2
+  *********************************************/
 class Acceleration : public Vector2D
 {
    friend class TestAcceleration;

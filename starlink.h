@@ -8,7 +8,13 @@
  ************************************************************************/
 
 #pragma once
+
 #include "satellite.h"
+
+ /*********************************************
+  * Starlink
+  * The Starlink satellite.
+  *********************************************/
 class Starlink : public Satellite
 {
 public:

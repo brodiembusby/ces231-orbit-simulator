@@ -7,15 +7,16 @@
  *    Derived class of OrbitObject. Methods that return dragon parts
  ************************************************************************/
 
-#pragma once
 #include "dragon.h"
 #include "part.h"
-/************************************************************************
-* breakApart
-*    Takes
-*    INPUT      gout   graphical output 
-*               dragon dragon object       
-************************************************************************/
+
+ /************************************************************************
+ * BREAK APART
+ * Called when the part collides with something.
+ * some time.
+ *    INPUT  orbitObjects           All orbit objects active in the scene this frame.
+ *												Passed by reference to allow modification.
+ ************************************************************************/
 void Dragon::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
 

@@ -7,9 +7,16 @@
  *    Derived class of OrbitObject. Methods that return hubble parts
  ************************************************************************/
 
-#pragma once
 #include "hubble.h"
 #include "part.h"
+
+ /************************************************************************
+ * BREAK APART
+ * Called when the part collides with something.
+ * some time.
+ *    INPUT  orbitObjects           All orbit objects active in the scene this frame.
+ *												Passed by reference to allow modification.
+ ************************************************************************/
 void Hubble::breakApart(std::vector<OrbitObject*>& orbitObjects) const {
 
    //Instatiate Positions

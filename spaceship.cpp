@@ -7,8 +7,6 @@
  *    All functions for the spaceship to work.
  ************************************************************************/
 
-#pragma once
-
 #include "spaceship.h"
 #include "acceleration.h"
 #include "vector2D.h"
@@ -17,6 +15,7 @@
 #include <vector>
 #include "fragment.h"
 
+// Placeholder function for rotate, located in uiDraw.cpp
 Position rotate(const Position& origin, double x, double y, double rotation);
 
 /************************************************************************

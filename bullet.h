@@ -8,9 +8,14 @@
  ************************************************************************/
 
 #pragma once
+
 #include "orbitObject.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*
 
+ /*********************************************
+  * Bullet
+  * A single projectile launched from the Spaceship.
+  *********************************************/
 class Bullet : public OrbitObject
 {
 private:

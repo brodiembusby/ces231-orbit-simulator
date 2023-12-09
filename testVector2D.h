@@ -6,7 +6,13 @@
  * Summary:
  *    All the unit tests for Vector2D
  ************************************************************************/
+
 #pragma once
+
+ /*********************************************
+  * TEST Vector2D
+  * Test suite for the Vector2D class.
+  *********************************************/
 class TestVector2D
 {
 public:

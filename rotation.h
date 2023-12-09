@@ -6,10 +6,15 @@
   * Summary:
   *     Helps simulate the rotation of objects.
   ************************************************************************/
+
 #pragma once
 
 #include "constants.h"
 
+  /*********************************************
+   * Rotation
+   * A rotation in terms of radians.
+   *********************************************/
 class Rotation
 {
    friend class TestRotation;

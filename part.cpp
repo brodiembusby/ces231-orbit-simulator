@@ -7,8 +7,6 @@
  *    Functions that make parts work
  ************************************************************************/
 
-#pragma once
-
 #include "part.h"
 #include "fragment.h"
 

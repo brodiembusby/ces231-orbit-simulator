@@ -7,16 +7,16 @@
  *    Derived class of OrbitObject. Methods that return GPS parts
  ************************************************************************/
 
-
 #include "gps.h"
 #include "part.h"
-#pragma once
-/************************************************************************
-* breakApart
-*    Takes
-*    INPUT      gout   graphical output
-*               gps gps object
-************************************************************************/
+
+ /************************************************************************
+ * BREAK APART
+ * Called when the part collides with something.
+ * some time.
+ *    INPUT  orbitObjects           All orbit objects active in the scene this frame.
+ *												Passed by reference to allow modification.
+ ************************************************************************/
 void GPS::breakApart(std::vector<OrbitObject*>& orbitObjects) const  {
   
    //Instatiate Positions

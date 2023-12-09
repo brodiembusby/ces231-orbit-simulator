@@ -6,6 +6,7 @@
  * Summary:
  *    header file for Hubble
  ************************************************************************/
+
 #pragma once
 
 #include "satellite.h"

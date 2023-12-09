@@ -8,11 +8,15 @@
  ************************************************************************/
 
 #pragma once
-#include "orbitObject.h"
-class Satellite :
-    public OrbitObject
-{
 
+#include "orbitObject.h"
+
+ /*********************************************
+  * Satellite
+  * Base class for all satellites.
+  *********************************************/
+class Satellite : public OrbitObject
+{
 public:
 
    void update(const double time) override;  // updates rotation on object

@@ -6,12 +6,13 @@
  * Summary:
  *    Derived class of Vector2D, calculates DeltaPosition
  ************************************************************************/
+
 #include "velocity.h"
 #include "position.h"
 
 /************************************************************************
- * GET POSITION FROM TIME
- * Calculate the final velocity after a certain time with a constant acceleration.
+ * GET DELTA POSITION
+ * Calculates the delta position resultant from this Velocity after the given time.
  *    INPUT  time                Time
  *    OUTPUT                     Delta position after the specified time
  ************************************************************************/

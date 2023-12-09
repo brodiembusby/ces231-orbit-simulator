@@ -12,10 +12,16 @@
 #include "velocity.h"
 #include "fragment.h"
 #include <random>
-#pragma once
 
 std::default_random_engine re;
 
+/************************************************************************
+* GET RANDOM DOUBLE
+* Utility function that generates and returns a random double.
+* some time.
+*    INPUT  min            The lowest acceptable number.
+*           max            The highest acceptable number.
+************************************************************************/
 double OrbitObject::getRandomDouble(double min, double max)
 {
    std::uniform_real_distribution<double> unif(min, max);

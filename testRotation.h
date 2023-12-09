@@ -6,7 +6,13 @@
  * Summary:
  *    All the unit tests for Rotation
  ************************************************************************/
+
 #pragma once
+
+ /*********************************************
+  * TEST Rotation
+  * Test suite for the Rotation class.
+  *********************************************/
 class TestRotation
 {
 public:

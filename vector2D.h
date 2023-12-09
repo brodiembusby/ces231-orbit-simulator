@@ -1,6 +1,6 @@
 /***********************************************************************
  * Header File:
- *    Vector 2D : The base class for a 2D vectory (x- and y-components).
+ *    Vector 2D : The base class for a 2D vector (x- and y-components).
  * Author:
  *    Aaron Fox
  * Summary:
@@ -9,6 +9,10 @@
 
 #pragma once
 
+ /*********************************************
+  * Vector 2D
+  * Base class for a 2D vector (x- and y-components).
+  *********************************************/
 class Vector2D
 {
 private:

@@ -8,6 +8,7 @@
  ************************************************************************/
 
 #pragma once
+
 #include "orbitObject.h"
 #include "acceleration.h"
 #include "uiDraw.h"     // for RANDOM and DRAW*

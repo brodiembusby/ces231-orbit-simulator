@@ -6,8 +6,13 @@
  * Summary:
  *    All the unit tests for Acceleration
  ************************************************************************/
+
 #pragma once
 
+ /*********************************************
+  * TEST Acceleration
+  * Test suite for the Acceleration class.
+  *********************************************/
 class TestAcceleration
 {
 public:

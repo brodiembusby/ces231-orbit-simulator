@@ -7,8 +7,6 @@
  *    Derived class of OrbitObject. Methods that return starlink parts
  ************************************************************************/
 
-#pragma once
-
 #include "starlink.h"
 #include "part.h"
 

@@ -6,11 +6,16 @@
  * Summary:
  *    Derived class of Vector2D, contains constructors and getDeltaPosition
  ************************************************************************/
+
 #pragma once
 
 #include "vector2D.h"
 #include "position.h"
 
+ /*********************************************
+  * Velocity
+  * Speed in x- and y-components in meters/second.
+  *********************************************/
 class Velocity : public Vector2D
 {
 

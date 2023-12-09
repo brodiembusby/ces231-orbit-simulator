@@ -6,11 +6,18 @@
 * Description:
 *     This handles all the stars in the world.
 ***************************************/
+
 #pragma once
+
 #include "position.h"
 #include "uiDraw.h"
 #include "uiInteract.h"
 #include <iostream>
+
+/*********************************************
+ * Star
+ * A single star in the background.
+ *********************************************/
 class Star
 {
 private:

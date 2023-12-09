@@ -8,6 +8,7 @@
  ************************************************************************/
 
 #pragma once
+
 #include "orbitObject.h"
 #include <functional>
 

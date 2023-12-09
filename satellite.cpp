@@ -6,9 +6,14 @@
  * Summary:
  *    Methods relating to satellite
  ************************************************************************/
+
 #include "satellite.h"
 
-
+ /************************************************************************
+ * UPDATE
+ * Called once per frame. In this case, Satellite will modify and update its rotation.
+ *    INPUT  time           The time that has passed since the last frame.
+ ************************************************************************/
 void Satellite::update(const double time)
 {
    OrbitObject::update(time);
@@ -30,7 +35,6 @@ void Satellite::update(const double time)
       double speed = rotation.getSpeed();
       rotation.setSpeed(speed += .001);
    }
-
 
    // Update the rotation.
    rotation.update(TIME);

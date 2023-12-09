@@ -6,8 +6,15 @@
  * Summary:
  *    header file for Sputnik
  ************************************************************************/
+
 #pragma once
+
 #include "satellite.h"
+
+ /*********************************************
+  * Sputnik
+  * The Sputnik satellite.
+  *********************************************/
 class Sputnik : public Satellite
 {
 
