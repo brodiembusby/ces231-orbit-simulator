@@ -35,7 +35,7 @@ class GPSRight : public Part
 public:
    GPSRight() : Part(3) {}
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawGPSRight(position, rotation.getAngle(), rightPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 8; }
 };
 
 class GPSLeft : public Part
@@ -43,7 +43,7 @@ class GPSLeft : public Part
 public:
    GPSLeft() : Part(3) {}
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawGPSLeft(position, rotation.getAngle(), leftPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 8; }
 };
 
 class GPSCenter : public Part
@@ -51,7 +51,7 @@ class GPSCenter : public Part
 public:
    GPSCenter() : Part(3) {}
    void draw(ogstream& gout) const override { Position upPos; upPos.addPixelsY(10);  gout.drawGPSCenter(position, rotation.getAngle()); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 7; }
 };
 
 /*******************************
@@ -62,7 +62,7 @@ class HubbleRight : public Part
 public:
    HubbleRight() : Part(2) {}
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawHubbleRight(position, rotation.getAngle(), rightPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 8; }
 };
 
 class HubbleLeft : public Part
@@ -70,7 +70,7 @@ class HubbleLeft : public Part
 public:
    HubbleLeft() : Part(2) {}
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawHubbleLeft(position, rotation.getAngle(), leftPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 8; }
 };
 
 class HubbleComputer : public Part
@@ -78,7 +78,7 @@ class HubbleComputer : public Part
 public:
    HubbleComputer() : Part(2) {}
    void draw(ogstream& gout) const override { Position upPos; upPos.addPixelsY(10);  gout.drawHubbleComputer(position, rotation.getAngle(), upPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 7; }
 };
 
 class HubbleTelescope : public Part
@@ -86,7 +86,7 @@ class HubbleTelescope : public Part
 public:
    HubbleTelescope() : Part(3) {}
    void draw(ogstream& gout) const override { Position downPos; downPos.addPixelsY(-10); gout.drawHubbleTelescope(position, rotation.getAngle(), downPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 10; }
 };
 
 /*******************************
@@ -105,7 +105,7 @@ class StarlinkArray : public Part
 public:
    StarlinkArray() : Part(3) {}
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawStarlinkBody(position, rotation.getAngle(), leftPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 4; }
 };
 
 /*******************************
@@ -116,7 +116,7 @@ class CrewDragonRight : public Part
 public:
    CrewDragonRight() : Part(2) {}
    void draw(ogstream& gout) const override { Position rightPos; rightPos.addPixelsX(10);  gout.drawCrewDragonRight(position, rotation.getAngle(), rightPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 6; }
 };
 
 class CrewDragonLeft : public Part
@@ -124,7 +124,7 @@ class CrewDragonLeft : public Part
 public:
    CrewDragonLeft() : Part(2) {}
    void draw(ogstream& gout) const override { Position leftPos; leftPos.addPixelsX(-10);  gout.drawCrewDragonLeft(position, rotation.getAngle(), leftPos); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 6; }
 };
 
 class CrewDragonCenter : public Part
@@ -132,5 +132,5 @@ class CrewDragonCenter : public Part
 public:
    CrewDragonCenter() : Part(4) {}
    void draw(ogstream& gout) const override { Position upPos; upPos.addPixelsY(10);  gout.drawCrewDragonCenter(position, rotation.getAngle()); }
-   const double getRadius() const override { return 2; }
+   const double getRadius() const override { return 6; }
 };
